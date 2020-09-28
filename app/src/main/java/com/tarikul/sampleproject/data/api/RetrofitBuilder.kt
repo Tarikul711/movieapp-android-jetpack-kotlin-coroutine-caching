@@ -1,5 +1,6 @@
 package com.tos.myapplication.data.api
 
+import com.tarikul.sampleproject.data.api.BaseUrl.API_BASE_URL
 import com.tos.android_retrofit_mvvm_jetpack_kotlin.MyApplication
 import com.tos.android_retrofit_mvvm_jetpack_kotlin.utils.NetworkUtils
 import okhttp3.*
@@ -13,8 +14,6 @@ import java.util.concurrent.TimeUnit
  *Created by tarikul on 5/9/20
  */
 object RetrofitBuilder {
-    private const val BASE_URL = "https://api.themoviedb.org/3/"
-
     // Caching data from online
     var cacheSize: Long = 5 * 1024 * 1024;
     var HEADER_CACHE_CONTROL: String = "Cache-Control"
@@ -31,7 +30,7 @@ object RetrofitBuilder {
 
     private fun getRetrofit(): Retrofit {
         return Retrofit.Builder()
-            .baseUrl(BASE_URL)
+            .baseUrl(API_BASE_URL)
             .client(httpClient.build())
             .addConverterFactory(GsonConverterFactory.create())
             .build()
