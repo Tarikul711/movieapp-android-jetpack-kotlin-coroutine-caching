@@ -13,7 +13,7 @@ import java.util.concurrent.TimeUnit
  *Created by tarikul on 5/9/20
  */
 object RetrofitBuilder {
-    private const val BASE_URL = "https://jsonplaceholder.typicode.com/"
+    private const val BASE_URL = "https://api.themoviedb.org/3/"
 
     // Caching data from online
     var cacheSize: Long = 5 * 1024 * 1024;
@@ -32,7 +32,7 @@ object RetrofitBuilder {
     private fun getRetrofit(): Retrofit {
         return Retrofit.Builder()
             .baseUrl(BASE_URL)
-//            .client(httpClient.build())
+            .client(httpClient.build())
             .addConverterFactory(GsonConverterFactory.create())
             .build()
     }
