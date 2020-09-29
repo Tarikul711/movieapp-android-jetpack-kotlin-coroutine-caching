@@ -1,6 +1,6 @@
 package com.tos.androidlivedataviewmodel.projectOne.data.api
 
-import com.tos.androidlivedataviewmodel.projectOne.data.model.PhotoModel
+import com.tarikul.sampleproject.data.model.movies.MovieResponse
 import com.tos.myapplication.data.api.ApiHelper
 import com.tos.myapplication.data.api.ApiService
 import kotlinx.coroutines.flow.Flow
@@ -11,7 +11,7 @@ import kotlinx.coroutines.flow.flow
  */
 
 class ApiHelperImpl(var apiService: ApiService) : ApiHelper {
-    override suspend fun getPhotoAlbum(): Flow<List<PhotoModel>> =
-        flow { emit(apiService.getPhotoAlbum()) }
+    override suspend fun getPhotoAlbum(): Flow<MovieResponse> =
+        flow { emit(apiService.getMovies()) }
 
 }

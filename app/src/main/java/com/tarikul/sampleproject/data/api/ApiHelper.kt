@@ -1,10 +1,10 @@
 package com.tos.myapplication.data.api
 
-import com.tos.androidlivedataviewmodel.projectOne.data.model.PhotoModel
+import com.tarikul.sampleproject.data.model.movies.MovieResponse
 import kotlinx.coroutines.flow.Flow
 
 interface ApiHelper {
 
-    suspend fun getPhotoAlbum(): Flow<List<PhotoModel>>
+    suspend fun getPhotoAlbum(): Flow<MovieResponse>
 
 }
