@@ -8,5 +8,5 @@ import com.tos.myapplication.data.api.ApiHelper
 
 class MovieListRepository(private var apiHelper: ApiHelper) {
 
-    suspend fun getPhotoAlbum ()= apiHelper.getPhotoAlbum()
+    suspend fun getMovies() = apiHelper.getMovies()
 }

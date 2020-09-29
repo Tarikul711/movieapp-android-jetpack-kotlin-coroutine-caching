@@ -11,7 +11,7 @@ import kotlinx.coroutines.flow.flow
  */
 
 class ApiHelperImpl(var apiService: ApiService) : ApiHelper {
-    override suspend fun getPhotoAlbum(): Flow<MovieResponse> =
+    override suspend fun getMovies(): Flow<MovieResponse> =
         flow { emit(apiService.getMovies()) }
 
 }

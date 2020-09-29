@@ -5,6 +5,6 @@ import kotlinx.coroutines.flow.Flow
 
 interface ApiHelper {
 
-    suspend fun getPhotoAlbum(): Flow<MovieResponse>
+    suspend fun getMovies(): Flow<MovieResponse>
 
 }
