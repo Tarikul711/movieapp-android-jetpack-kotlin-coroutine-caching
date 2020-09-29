@@ -13,4 +13,8 @@
         android:id="@+id/movieFragment"
         android:icon="@drawable/ic_baseline_movie_24"
         android:title="@string/title_movie" />
+    <item
+        android:id="@+id/profileFragment"
+        android:icon="@drawable/ic_baseline_account_circle_24"
+        android:title="@string/title_profile" />
 </menu>
