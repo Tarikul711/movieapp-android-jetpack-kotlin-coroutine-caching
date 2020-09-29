@@ -20,12 +20,14 @@
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottom_nav"
-        android:layout_width="138dp"
-        android:layout_height="88dp"
-        app:menu="@menu/bottom_nav_item"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/bottom_nav_background"
+        android:minHeight="?actionBarSize"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/fragment" />
+        app:layout_constraintTop_toBottomOf="@+id/fragment"
+        app:menu="@menu/bottom_nav_item" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
