@@ -1,16 +1,19 @@
 package com.tarikul.sampleproject.ui.main.adapter
 
-import androidx.recyclerview.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.bumptech.glide.load.resource.bitmap.CenterCrop
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
+import com.bumptech.glide.request.RequestOptions
 import com.tarikul.sampleproject.R
 import com.tarikul.sampleproject.data.api.BaseUrl.BASE_IMAGES_URL
+import com.tarikul.sampleproject.data.model.movies.Result
 import kotlinx.android.synthetic.main.item_movie.view.*
 import java.util.*
-import com.tarikul.sampleproject.data.model.movies.Result as Result
+
 
 /**
  *Created by tarikul on 29/9/20
@@ -39,12 +42,16 @@ class MovieListAdapter : RecyclerView.Adapter<MovieListAdapter.MovieListViewHold
     class MovieListViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         fun bind(item: Result) = with(itemView) {
             itemView.apply {
+                var requestOptions = RequestOptions()
+                requestOptions = requestOptions.transforms(CenterCrop(), RoundedCorners(16))
+                tvMovieTitle.text = item.original_title
+                tvRating.text = item.vote_average.toString()
+                tvMovieYear.text = item.release_date.split("-")[0]
                 Glide.with(ivMovieImage)
                     .load("${BASE_IMAGES_URL}${item.poster_path}")
-                    .apply { RoundedCorners(20) }
+                    .apply(requestOptions)
                     .into(ivMovieImage)
-                tvMovieTitle.text = item.original_title
-                tvMovieYear.text = item.release_date.split("-")[0]
+
             }
             setOnClickListener {
                 // TODO: Handle on click
