@@ -40,7 +40,7 @@ class MovieListViewModel(var movieListRepository: MovieListRepository) : ViewMod
          }*/
     }
 
-    fun getPhotoData(): MutableLiveData<Resource<MovieResponse>> {
+    fun getMovies(): MutableLiveData<Resource<MovieResponse>> {
         return movies
     }
 }

@@ -10,8 +10,8 @@ import kotlinx.coroutines.flow.flow
  *Created by tarikul on 23/9/20
  */
 
-class ApiHelperImpl(var apiService: ApiService) : ApiHelper {
+class ApiHelperImpl(var apiService: ApiService, var page: Int) : ApiHelper {
     override suspend fun getMovies(): Flow<MovieResponse> =
-        flow { emit(apiService.getMovies()) }
+        flow { emit(apiService.getMovies(page)) }
 
 }
