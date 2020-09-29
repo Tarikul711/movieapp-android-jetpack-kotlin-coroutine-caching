@@ -1,7 +1,8 @@
-package com.tarikul.sampleproject
+package com.tarikul.sampleproject.ui.main.view
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.tarikul.sampleproject.R
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
