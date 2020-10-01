@@ -25,6 +25,7 @@ class MovieListViewModel(var movieListRepository: MovieListRepository) : ViewMod
 
     init {
         getAllMovies()
+        getTrendMovies()
     }
 
     private fun getAllMovies() = viewModelScope.launch {

@@ -10,7 +10,8 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.tarikul.sampleproject.R
-import com.tarikul.sampleproject.data.model.movies.Result
+import com.tarikul.sampleproject.data.model.movies.Result as Result
+import com.tarikul.sampleproject.data.model.trending.Result as TrendResult
 import com.tarikul.sampleproject.ui.base.ViewModelFactory
 import com.tarikul.sampleproject.ui.main.adapter.MovieListAdapter
 import com.tarikul.sampleproject.ui.main.adapter.TrendingMovieAdapter
@@ -38,6 +39,7 @@ class HomeFragment : Fragment() {
         setupUI(view)
         setupViewModel()
         setupMovieObserver()
+        setupTrendingMovieObserver()
         return view
     }
 
@@ -61,8 +63,8 @@ class HomeFragment : Fragment() {
         }
     }
 
-    private fun bindTrendingMovieAdapter(results: List<Result>) {
-        movieListAdapter.apply {
+    private fun bindTrendingMovieAdapter(results: List<TrendResult>) {
+        trendingMovieAdapter.apply {
             swapData(results)
             notifyDataSetChanged()
         }
@@ -97,11 +99,11 @@ class HomeFragment : Fragment() {
 
     private fun setupTrendingMovieObserver() {
         activity?.let {
-            movieViewModel.getMovies().observe(it, Observer {
+            movieViewModel.getTrendingMovies().observe(it, Observer {
                 it.let { resource ->
                     when (resource.status) {
                         Status.SUCCESS -> {
-                            resource.data?.let { movie -> bindDataWithAdapter(movie.results) }
+                            resource.data?.let { movie -> bindTrendingMovieAdapter(movie.results) }
                         }
                         Status.ERROR -> {
                         }

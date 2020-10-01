@@ -46,7 +46,6 @@ class TrendingMovieAdapter : RecyclerView.Adapter<TrendingMovieAdapter.MovieList
                 requestOptions = requestOptions.transforms(CenterCrop(), RoundedCorners(10))
                 tvMovieTitle.text = item.original_title
                 tvRating.text = item.vote_average.toString()
-                tvMovieYear.text = item.release_date.split("-")[0]
                 Glide.with(ivMovieImage)
                     .load("${BASE_IMAGES_URL}${item.poster_path}")
                     .apply(requestOptions)
