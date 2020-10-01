@@ -13,6 +13,7 @@ import com.tarikul.sampleproject.R
 import com.tarikul.sampleproject.data.model.movies.Result
 import com.tarikul.sampleproject.ui.base.ViewModelFactory
 import com.tarikul.sampleproject.ui.main.adapter.MovieListAdapter
+import com.tarikul.sampleproject.ui.main.adapter.TrendingMovieAdapter
 import com.tarikul.sampleproject.ui.main.viewmodel.MovieListViewModel
 import com.tos.androidlivedataviewmodel.projectOne.data.api.ApiHelperImpl
 import com.tos.androidlivedataviewmodel.projectOne.utils.Status
@@ -22,6 +23,7 @@ import kotlinx.android.synthetic.main.fragment_home.view.*
 class HomeFragment : Fragment() {
 
     private lateinit var movieListAdapter: MovieListAdapter
+    private lateinit var trendingMovieAdapter: TrendingMovieAdapter
     private lateinit var movieViewModel: MovieListViewModel
 
 
@@ -32,9 +34,10 @@ class HomeFragment : Fragment() {
         // Inflate the layout for this fragment
         val view = inflater.inflate(R.layout.fragment_home, container, false)
         movieListAdapter = MovieListAdapter()
+        trendingMovieAdapter = TrendingMovieAdapter()
         setupUI(view)
         setupViewModel()
-        setupObserver()
+        setupMovieObserver()
         return view
     }
 
@@ -44,10 +47,21 @@ class HomeFragment : Fragment() {
             upComingRecyclerView.layoutManager =
                 LinearLayoutManager(activity, LinearLayoutManager.HORIZONTAL, false)
             upComingRecyclerView.adapter = movieListAdapter
+
+            recyclerView.layoutManager =
+                LinearLayoutManager(activity, LinearLayoutManager.HORIZONTAL, false)
+            recyclerView.adapter = trendingMovieAdapter
         }
     }
 
-    private fun bindDataWithAdapter(results: List<Result>) {
+    private fun bindMovieAdapter(results: List<Result>) {
+        movieListAdapter.apply {
+            swapData(results)
+            notifyDataSetChanged()
+        }
+    }
+
+    private fun bindTrendingMovieAdapter(results: List<Result>) {
         movieListAdapter.apply {
             swapData(results)
             notifyDataSetChanged()
@@ -62,7 +76,26 @@ class HomeFragment : Fragment() {
                 )
     }
 
-    private fun setupObserver() {
+    private fun setupMovieObserver() {
+        activity?.let {
+            movieViewModel.getMovies().observe(it, Observer {
+                it.let { resource ->
+                    when (resource.status) {
+                        Status.SUCCESS -> {
+                            resource.data?.let { movie -> bindMovieAdapter(movie.results) }
+                        }
+                        Status.ERROR -> {
+                        }
+                        Status.LOADING -> {
+                        }
+                    }
+
+                }
+            })
+        }
+    }
+
+    private fun setupTrendingMovieObserver() {
         activity?.let {
             movieViewModel.getMovies().observe(it, Observer {
                 it.let { resource ->
