@@ -11,6 +11,7 @@ object BaseUrl {
 
 object Endpoint {
     const val DISCOVER_MOVIE = "discover/movie"
+    const val TRENDING_MOVIE = "trending/all/"
     const val DISCOVER_TV = "discover/tv"
 }
 
