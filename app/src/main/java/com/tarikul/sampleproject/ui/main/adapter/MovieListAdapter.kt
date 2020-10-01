@@ -43,7 +43,7 @@ class MovieListAdapter : RecyclerView.Adapter<MovieListAdapter.MovieListViewHold
         fun bind(item: Result) = with(itemView) {
             itemView.apply {
                 var requestOptions = RequestOptions()
-                requestOptions = requestOptions.transforms(CenterCrop(), RoundedCorners(16))
+                requestOptions = requestOptions.transforms(CenterCrop(), RoundedCorners(10))
                 tvMovieTitle.text = item.original_title
                 tvRating.text = item.vote_average.toString()
                 tvMovieYear.text = item.release_date.split("-")[0]
