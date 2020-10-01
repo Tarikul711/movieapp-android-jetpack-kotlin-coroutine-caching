@@ -6,6 +6,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.liveData
 import androidx.lifecycle.viewModelScope
 import com.tarikul.sampleproject.data.model.movies.MovieResponse
+import com.tarikul.sampleproject.data.model.trending.TrendingResponse
 import com.tarikul.sampleproject.data.repository.MovieListRepository
 import com.tos.androidlivedataviewmodel.projectOne.utils.Resource
 import kotlinx.coroutines.delay
@@ -20,6 +21,7 @@ import kotlinx.coroutines.launch
 class MovieListViewModel(var movieListRepository: MovieListRepository) : ViewModel() {
 
     private var movies = MutableLiveData<Resource<MovieResponse>>();
+    private var trendingMovies = MutableLiveData<Resource<TrendingResponse>>();
 
     init {
         getAllMovies()
@@ -32,15 +34,22 @@ class MovieListViewModel(var movieListRepository: MovieListRepository) : ViewMod
             .collect {
                 movies.postValue(Resource.success(it))
             }
-        /* emit(Resource.loading(data = null))
-         try {
-             emit(Resource.success(data = photoAlbumRepository.getPhotoAlbum()))
-         } catch (exception: Exception) {
-             emit(Resource.error(data = null, message = exception.message ?: "Error Occurred"))
-         }*/
+    }
+
+    private fun getTrendMovies() = viewModelScope.launch {
+        trendingMovies.postValue(Resource.loading(data = null))
+        movieListRepository.getTrendingMovies()
+            .catch { trendingMovies.postValue(Resource.error(null, "Error Occurred")) }
+            .collect {
+                trendingMovies.postValue(Resource.success(it))
+            }
     }
 
     fun getMovies(): MutableLiveData<Resource<MovieResponse>> {
         return movies
+    }
+
+    fun getTrendingMovies(): MutableLiveData<Resource<TrendingResponse>> {
+        return trendingMovies
     }
 }
