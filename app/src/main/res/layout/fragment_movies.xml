@@ -5,4 +5,10 @@
     android:layout_height="match_parent"
     tools:context=".ui.main.view.fragment.MoviesFragment">
 
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:gravity="center" />
 </FrameLayout>
