@@ -10,6 +10,7 @@ import android.widget.Toast
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.NavController
+import androidx.navigation.Navigation
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -80,7 +81,16 @@ class HomeFragment : Fragment() {
 
         view.apply {
             tvTrendingSeeAll.setOnClickListener {
-                findNavController().navigate(R.id.trending_to_movies_fragment)
+                val action = HomeFragmentDirections.trendingToMoviesFragment("trendingMovies")
+                findNavController().navigate(action)
+            }
+            tvTvShow.setOnClickListener {
+                val action = HomeFragmentDirections.trendingToMoviesFragment("tvShowMovies")
+                findNavController().navigate(action)
+            }
+            tvUpComing.setOnClickListener {
+                val action = HomeFragmentDirections.trendingToMoviesFragment("upComingMovies")
+                findNavController().navigate(action)
             }
         }
 

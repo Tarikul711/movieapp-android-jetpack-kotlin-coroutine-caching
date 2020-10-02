@@ -13,12 +13,7 @@
         <action
             android:id="@+id/trending_to_movies_fragment"
             app:destination="@id/moviesFragment"
-            app:popUpTo="@id/homeFragment"/>
-        <argument
-            android:name="movie_type"
-            app:argType="string"
-            android:defaultValue="movies_trending" />
-
+            app:popUpTo="@id/homeFragment" />
     </fragment>
 
     <fragment
@@ -40,5 +35,12 @@
         android:id="@+id/moviesFragment"
         android:name="com.tarikul.sampleproject.MoviesFragment"
         android:label="fragment_movies"
-        tools:layout="@layout/fragment_movies" />
+        tools:layout="@layout/fragment_movies">
+
+        <argument
+            android:name="movie_type"
+            android:defaultValue="movies_trending"
+            app:argType="string" />
+
+    </fragment>
 </navigation>
