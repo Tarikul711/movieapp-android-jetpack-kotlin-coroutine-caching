@@ -50,10 +50,10 @@ class MovieListViewModel(var movieListRepository: MovieListRepository) : ViewMod
 
     private fun getTvShow() = viewModelScope.launch {
         tvShows.postValue(Resource.loading(data = null))
-        movieListRepository.getTrendingMovies()
-            .catch { trendingMovies.postValue(Resource.error(null, "Error Occurred")) }
+        movieListRepository.getTvShows()
+            .catch { tvShows.postValue(Resource.error(null, "Error Occurred")) }
             .collect {
-                trendingMovies.postValue(Resource.success(it))
+                tvShows.postValue(Resource.success(it))
             }
     }
 

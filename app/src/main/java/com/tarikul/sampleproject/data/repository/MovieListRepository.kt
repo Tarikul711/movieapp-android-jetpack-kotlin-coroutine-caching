@@ -11,4 +11,8 @@ class MovieListRepository(private var apiHelper: ApiHelper) {
     suspend fun getMovies() = apiHelper.getMovies()
 
     suspend fun getTrendingMovies() = apiHelper.getTrendingMovies()
+
+    suspend fun getTvShows() = apiHelper.getTvShows()
+
+
 }
