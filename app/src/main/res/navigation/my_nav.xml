@@ -25,4 +25,9 @@
         android:name="com.tarikul.sampleproject.ui.main.view.fragment.ProfileFragment"
         android:label="fragment_profile"
         tools:layout="@layout/fragment_profile" />
+    <fragment
+        android:id="@+id/moviesFragment"
+        android:name="com.tarikul.sampleproject.MoviesFragment"
+        android:label="fragment_movies"
+        tools:layout="@layout/fragment_movies" />
 </navigation>
