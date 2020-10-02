@@ -7,6 +7,7 @@ import androidx.lifecycle.liveData
 import androidx.lifecycle.viewModelScope
 import com.tarikul.sampleproject.data.model.movies.MovieResponse
 import com.tarikul.sampleproject.data.model.trending.TrendingResponse
+import com.tarikul.sampleproject.data.model.tvShows.TvShowResponse
 import com.tarikul.sampleproject.data.repository.MovieListRepository
 import com.tos.androidlivedataviewmodel.projectOne.utils.Resource
 import kotlinx.coroutines.delay
@@ -22,6 +23,7 @@ class MovieListViewModel(var movieListRepository: MovieListRepository) : ViewMod
 
     private var movies = MutableLiveData<Resource<MovieResponse>>();
     private var trendingMovies = MutableLiveData<Resource<TrendingResponse>>();
+    private var tvShows = MutableLiveData<Resource<TvShowResponse>>();
 
     init {
         getAllMovies()
@@ -46,11 +48,24 @@ class MovieListViewModel(var movieListRepository: MovieListRepository) : ViewMod
             }
     }
 
+    private fun getTvShow() = viewModelScope.launch {
+        tvShows.postValue(Resource.loading(data = null))
+        movieListRepository.getTrendingMovies()
+            .catch { trendingMovies.postValue(Resource.error(null, "Error Occurred")) }
+            .collect {
+                trendingMovies.postValue(Resource.success(it))
+            }
+    }
+
     fun getMovies(): MutableLiveData<Resource<MovieResponse>> {
         return movies
     }
 
     fun getTrendingMovies(): MutableLiveData<Resource<TrendingResponse>> {
         return trendingMovies
+    }
+
+    fun getTvShows(): MutableLiveData<Resource<TvShowResponse>> {
+        return tvShows
     }
 }
