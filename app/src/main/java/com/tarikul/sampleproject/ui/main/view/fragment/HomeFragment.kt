@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.tarikul.sampleproject.R
 import com.tarikul.sampleproject.data.model.movies.Result as Result
 import com.tarikul.sampleproject.data.model.trending.Result as TrendResult
+import com.tarikul.sampleproject.data.model.tvShows.Result as TvShowResult
 import com.tarikul.sampleproject.ui.base.ViewModelFactory
 import com.tarikul.sampleproject.ui.main.adapter.MovieListAdapter
 import com.tarikul.sampleproject.ui.main.adapter.TrendingMovieAdapter
@@ -41,6 +42,7 @@ class HomeFragment : Fragment() {
         setupViewModel()
         setupMovieObserver()
         setupTrendingMovieObserver()
+        setupTvShowObserver()
         return view
     }
 
@@ -81,8 +83,8 @@ class HomeFragment : Fragment() {
         }
     }
 
-    private fun bindTvShowAdapter(results: List<TrendResult>) {
-        trendingMovieAdapter.apply {
+    private fun bindTvShowAdapter(results: List<TvShowResult>) {
+        tvShowAdapter.apply {
             swapData(results)
             notifyDataSetChanged()
         }
@@ -122,6 +124,25 @@ class HomeFragment : Fragment() {
                     when (resource.status) {
                         Status.SUCCESS -> {
                             resource.data?.let { movie -> bindTrendingMovieAdapter(movie.results) }
+                        }
+                        Status.ERROR -> {
+                        }
+                        Status.LOADING -> {
+                        }
+                    }
+
+                }
+            })
+        }
+    }
+
+    private fun setupTvShowObserver() {
+        activity?.let {
+            movieViewModel.getTvShows().observe(it, Observer {
+                it.let { resource ->
+                    when (resource.status) {
+                        Status.SUCCESS -> {
+                            resource.data?.let { movie -> bindTvShowAdapter(movie.results) }
                         }
                         Status.ERROR -> {
                         }
