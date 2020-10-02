@@ -28,7 +28,9 @@ class MovieListViewModel(var movieListRepository: MovieListRepository) : ViewMod
     init {
         getAllMovies()
         getTrendMovies()
+        getTvShow()
     }
+
 
     private fun getAllMovies() = viewModelScope.launch {
         movies.postValue(Resource.loading(data = null))

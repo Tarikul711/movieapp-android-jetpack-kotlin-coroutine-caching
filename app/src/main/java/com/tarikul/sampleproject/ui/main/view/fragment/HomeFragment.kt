@@ -15,6 +15,7 @@ import com.tarikul.sampleproject.data.model.trending.Result as TrendResult
 import com.tarikul.sampleproject.ui.base.ViewModelFactory
 import com.tarikul.sampleproject.ui.main.adapter.MovieListAdapter
 import com.tarikul.sampleproject.ui.main.adapter.TrendingMovieAdapter
+import com.tarikul.sampleproject.ui.main.adapter.TvShowListAdapter
 import com.tarikul.sampleproject.ui.main.viewmodel.MovieListViewModel
 import com.tos.androidlivedataviewmodel.projectOne.data.api.ApiHelperImpl
 import com.tos.androidlivedataviewmodel.projectOne.utils.Status
@@ -25,6 +26,7 @@ class HomeFragment : Fragment() {
 
     private lateinit var movieListAdapter: MovieListAdapter
     private lateinit var trendingMovieAdapter: TrendingMovieAdapter
+    private lateinit var tvShowAdapter: TvShowListAdapter
     private lateinit var movieViewModel: MovieListViewModel
 
 
@@ -34,13 +36,18 @@ class HomeFragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         val view = inflater.inflate(R.layout.fragment_home, container, false)
-        movieListAdapter = MovieListAdapter()
-        trendingMovieAdapter = TrendingMovieAdapter()
+        setupAdapter()
         setupUI(view)
         setupViewModel()
         setupMovieObserver()
         setupTrendingMovieObserver()
         return view
+    }
+
+    private fun setupAdapter() {
+        movieListAdapter = MovieListAdapter()
+        trendingMovieAdapter = TrendingMovieAdapter()
+        tvShowAdapter = TvShowListAdapter()
     }
 
 
@@ -53,6 +60,10 @@ class HomeFragment : Fragment() {
             recyclerView.layoutManager =
                 LinearLayoutManager(activity, LinearLayoutManager.HORIZONTAL, false)
             recyclerView.adapter = trendingMovieAdapter
+
+            tvShowRecyclerView.layoutManager =
+                LinearLayoutManager(activity, LinearLayoutManager.HORIZONTAL, false)
+            tvShowRecyclerView.adapter = tvShowAdapter
         }
     }
 
@@ -64,6 +75,13 @@ class HomeFragment : Fragment() {
     }
 
     private fun bindTrendingMovieAdapter(results: List<TrendResult>) {
+        trendingMovieAdapter.apply {
+            swapData(results)
+            notifyDataSetChanged()
+        }
+    }
+
+    private fun bindTvShowAdapter(results: List<TrendResult>) {
         trendingMovieAdapter.apply {
             swapData(results)
             notifyDataSetChanged()
