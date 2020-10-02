@@ -8,13 +8,18 @@ import com.tarikul.sampleproject.data.api.QueryMovie.API_KEY
 import com.tarikul.sampleproject.data.api.QueryMovie.API_KEY_VALUE
 import com.tarikul.sampleproject.data.api.QueryMovie.INCLUDE_ADULT
 import com.tarikul.sampleproject.data.api.QueryMovie.INCLUDE_ADULT_DEFAULT
+import com.tarikul.sampleproject.data.api.QueryMovie.INCLUDE_NULL_FIRST
+import com.tarikul.sampleproject.data.api.QueryMovie.INCLUDE_NULL_FIRST_DEFAULT
 import com.tarikul.sampleproject.data.api.QueryMovie.LANGUAGE
 import com.tarikul.sampleproject.data.api.QueryMovie.LANGUAGE_DEFAULT
 import com.tarikul.sampleproject.data.api.QueryMovie.PAGE
 import com.tarikul.sampleproject.data.api.QueryMovie.SORT_BY
 import com.tarikul.sampleproject.data.api.QueryMovie.SORT_BY_DEFAULT
+import com.tarikul.sampleproject.data.api.QueryMovie.TIMEZONE
+import com.tarikul.sampleproject.data.api.QueryMovie.TIMEZONE_DEFAULT
 import com.tarikul.sampleproject.data.model.movies.MovieResponse
 import com.tarikul.sampleproject.data.model.trending.TrendingResponse
+import com.tarikul.sampleproject.data.model.tvShows.TvShowResponse
 import retrofit2.http.GET
 import retrofit2.http.Path
 import retrofit2.http.Query
@@ -30,14 +35,21 @@ interface ApiService {
         @Query(API_KEY) apiKey: String = API_KEY_VALUE
     ): MovieResponse
 
-    @GET(DISCOVER_TV)
-    suspend fun getTvShows(): MovieResponse
-
     @GET("$TRENDING_MOVIE{dayOrWeek}")
     suspend fun getTrendingMovies(
         @Path(value = "dayOrWeek", encoded = true) dayOrWeek: String,
         @Query(API_KEY) apiKey: String = API_KEY_VALUE
     ): TrendingResponse
 
+
+    @GET(DISCOVER_TV)
+    suspend fun getTvShow(
+        @Query(PAGE) page: Int,
+        @Query(SORT_BY) sortBy: String = SORT_BY_DEFAULT,
+        @Query(LANGUAGE) language: String = LANGUAGE_DEFAULT,
+        @Query(API_KEY) apiKey: String = API_KEY_VALUE,
+        @Query(TIMEZONE) timeZone: String = TIMEZONE_DEFAULT,
+        @Query(INCLUDE_NULL_FIRST) includeNull: Boolean = INCLUDE_NULL_FIRST_DEFAULT
+    ): TvShowResponse
 
 }
