@@ -10,10 +10,8 @@
         android:name="com.tarikul.sampleproject.ui.main.view.fragment.HomeFragment"
         android:label="fragment_home"
         tools:layout="@layout/fragment_home">
-
-
         <action
-            android:id="@+id/tvTrending"
+            android:id="@+id/trending_to_movies_fragment"
             app:destination="@id/moviesFragment" />
         <argument
             android:name="movie_type"
@@ -21,6 +19,7 @@
             android:defaultValue="movies_trending" />
 
     </fragment>
+
     <fragment
         android:id="@+id/searchFragment"
         android:name="com.tarikul.sampleproject.ui.main.view.fragment.SearchFragment"
