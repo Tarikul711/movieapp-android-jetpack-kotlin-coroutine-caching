@@ -12,7 +12,8 @@
         tools:layout="@layout/fragment_home">
         <action
             android:id="@+id/trending_to_movies_fragment"
-            app:destination="@id/moviesFragment" />
+            app:destination="@id/moviesFragment"
+            app:popUpTo="@id/homeFragment"/>
         <argument
             android:name="movie_type"
             app:argType="string"

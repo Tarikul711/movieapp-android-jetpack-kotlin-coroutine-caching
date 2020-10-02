@@ -10,6 +10,7 @@ import android.widget.Toast
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.NavController
+import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.tarikul.sampleproject.MoviesFragment
@@ -48,7 +49,7 @@ class HomeFragment : Fragment() {
         setupMovieObserver()
         setupTrendingMovieObserver()
         setupTvShowObserver()
-        setupMovieFragment()
+        setupMovieFragment(view)
         return view
     }
 
@@ -75,11 +76,14 @@ class HomeFragment : Fragment() {
         }
     }
 
-    private fun setupMovieFragment(view:View) {
+    private fun setupMovieFragment(view: View) {
 
-        recyclerView.setOnClickListener {
-            Toast.makeText(activity, "kkk", Toast.LENGTH_SHORT).show()
+        view.apply {
+            tvTrendingSeeAll.setOnClickListener {
+                findNavController().navigate(R.id.trending_to_movies_fragment)
+            }
         }
+
 //        tvTvShow.setOnClickListener { }
 //        tvUpComing.setOnClickListener { }
 
