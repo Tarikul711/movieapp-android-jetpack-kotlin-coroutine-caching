@@ -33,7 +33,7 @@
         tools:layout="@layout/fragment_profile" />
     <fragment
         android:id="@+id/moviesFragment"
-        android:name="com.tarikul.sampleproject.MoviesFragment"
+        android:name="com.tarikul.sampleproject.ui.main.view.fragment.MoviesFragment"
         android:label="fragment_movies"
         tools:layout="@layout/fragment_movies">
 

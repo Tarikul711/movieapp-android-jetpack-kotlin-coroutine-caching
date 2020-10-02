@@ -6,15 +6,10 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import androidx.navigation.NavController
-import androidx.navigation.Navigation
 import androidx.navigation.findNavController
-import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.tarikul.sampleproject.MoviesFragment
 import com.tarikul.sampleproject.R
 import com.tarikul.sampleproject.data.model.movies.Result as Result
 import com.tarikul.sampleproject.data.model.trending.Result as TrendResult
@@ -27,7 +22,6 @@ import com.tarikul.sampleproject.ui.main.viewmodel.MovieListViewModel
 import com.tos.androidlivedataviewmodel.projectOne.data.api.ApiHelperImpl
 import com.tos.androidlivedataviewmodel.projectOne.utils.Status
 import com.tos.myapplication.data.api.RetrofitBuilder
-import kotlinx.android.synthetic.main.fragment_home.*
 import kotlinx.android.synthetic.main.fragment_home.view.*
 
 class HomeFragment : Fragment() {
