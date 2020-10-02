@@ -21,6 +21,7 @@ import com.tarikul.sampleproject.ui.main.viewmodel.MovieListViewModel
 import com.tos.androidlivedataviewmodel.projectOne.data.api.ApiHelperImpl
 import com.tos.androidlivedataviewmodel.projectOne.utils.Status
 import com.tos.myapplication.data.api.RetrofitBuilder
+import kotlinx.android.synthetic.main.fragment_home.*
 import kotlinx.android.synthetic.main.fragment_home.view.*
 
 class HomeFragment : Fragment() {
@@ -43,6 +44,7 @@ class HomeFragment : Fragment() {
         setupMovieObserver()
         setupTrendingMovieObserver()
         setupTvShowObserver()
+        setupMovieFragment()
         return view
     }
 
@@ -67,6 +69,14 @@ class HomeFragment : Fragment() {
                 LinearLayoutManager(activity, LinearLayoutManager.HORIZONTAL, false)
             tvShowRecyclerView.adapter = tvShowAdapter
         }
+    }
+
+    private fun setupMovieFragment() {
+/*
+        tvTrending.setOnClickListener { }
+        tvTvShow.setOnClickListener { }
+        tvUpComing.setOnClickListener { }
+*/
     }
 
     private fun bindMovieAdapter(results: List<Result>) {
