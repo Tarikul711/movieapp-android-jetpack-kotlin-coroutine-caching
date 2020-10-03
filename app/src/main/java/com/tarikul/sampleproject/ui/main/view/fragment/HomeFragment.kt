@@ -87,10 +87,6 @@ class HomeFragment : Fragment() {
                 findNavController().navigate(action)
             }
         }
-
-//        tvTvShow.setOnClickListener { }
-//        tvUpComing.setOnClickListener { }
-
     }
 
     private fun bindMovieAdapter(results: List<Result>) {

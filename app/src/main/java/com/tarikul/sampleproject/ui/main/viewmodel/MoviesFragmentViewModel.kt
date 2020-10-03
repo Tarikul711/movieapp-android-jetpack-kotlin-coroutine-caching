@@ -25,10 +25,6 @@ class MoviesFragmentViewModel(private var movieListRepository: MovieListReposito
     private var tvShows = MutableLiveData<Resource<TvShowResponse>>()
     private var movies = MutableLiveData<Resource<MovieResponse>>()
 
-    init {
-
-    }
-
     fun getMoviesData() = viewModelScope.launch {
         movies.postValue(Resource.loading(data = null))
         movieListRepository.getMovies()
