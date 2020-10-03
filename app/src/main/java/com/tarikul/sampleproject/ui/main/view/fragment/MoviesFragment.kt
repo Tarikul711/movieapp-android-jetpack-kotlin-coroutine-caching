@@ -1,6 +1,7 @@
 package com.tarikul.sampleproject.ui.main.view.fragment
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -8,25 +9,29 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.navArgs
+import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.tarikul.sampleproject.R
 import com.tarikul.sampleproject.data.model.movies.Result
+import com.tarikul.sampleproject.data.model.trending.Result as TrendingResult
+import com.tarikul.sampleproject.data.model.tvShows.Result as TvShowResult
 import com.tarikul.sampleproject.ui.base.ViewModelFactory
 import com.tarikul.sampleproject.ui.main.adapter.MovieListAdapter
 import com.tarikul.sampleproject.ui.main.adapter.TrendingMovieAdapter
 import com.tarikul.sampleproject.ui.main.adapter.TvShowListAdapter
-import com.tarikul.sampleproject.ui.main.viewmodel.HomeFragmentViewModel
 import com.tarikul.sampleproject.ui.main.viewmodel.MoviesFragmentViewModel
 import com.tos.androidlivedataviewmodel.projectOne.data.api.ApiHelperImpl
-import com.tos.androidlivedataviewmodel.projectOne.utils.MovieType
 import com.tos.androidlivedataviewmodel.projectOne.utils.MovieType.*
 import com.tos.androidlivedataviewmodel.projectOne.utils.Status
 import com.tos.myapplication.data.api.RetrofitBuilder
+import kotlinx.android.synthetic.main.fragment_home.view.*
 import kotlinx.android.synthetic.main.fragment_movies.*
 import kotlinx.android.synthetic.main.fragment_movies.view.*
+import kotlinx.android.synthetic.main.fragment_movies.view.recyclerView
 
 
 class MoviesFragment : Fragment() {
-
+    private val TAG = "MoviesFragment"
     private val args: MoviesFragmentArgs by navArgs()
     private lateinit var moviesFragmentViewModel: MoviesFragmentViewModel
     private lateinit var trendingMovieAdapter: TrendingMovieAdapter
@@ -38,9 +43,13 @@ class MoviesFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         val view = inflater.inflate(R.layout.fragment_movies, container, false)
-        setupAdapter()
-        setupView(view)
-        setupViewModel()
+        try {
+            setupAdapter()
+            setupViewModel()
+            setupView(view)
+        } catch (e: Exception) {
+            Log.e(TAG, "onCreateView: ${e.message}")
+        }
         return view
     }
 
@@ -53,6 +62,8 @@ class MoviesFragment : Fragment() {
 
     private fun setupView(view: View) {
         view.apply {
+            recyclerView.layoutManager =
+                LinearLayoutManager(activity, LinearLayoutManager.HORIZONTAL, false)
             when (args.movieType) {
                 TRENDING -> {
                     recyclerView.adapter = TrendingMovieAdapter()
@@ -84,23 +95,20 @@ class MoviesFragment : Fragment() {
 
     private fun bindMovieAdapter(results: List<Result>) {
         movieListAdapter.apply {
-            progressbar.visibility = View.GONE
             swapData(results)
             notifyDataSetChanged()
         }
     }
 
-    private fun bindTrendingMovieAdapter(results: List<com.tarikul.sampleproject.data.model.trending.Result>) {
+    private fun bindTrendingMovieAdapter(results: List<TrendingResult>) {
         trendingMovieAdapter.apply {
-            progressbar.visibility = View.GONE
             swapData(results)
             notifyDataSetChanged()
         }
     }
 
-    private fun bindTvShowAdapter(results: List<com.tarikul.sampleproject.data.model.tvShows.Result>) {
+    private fun bindTvShowAdapter(results: List<TvShowResult>) {
         tvShowAdapter.apply {
-            progressbar.visibility = View.GONE
             swapData(results)
             notifyDataSetChanged()
         }
