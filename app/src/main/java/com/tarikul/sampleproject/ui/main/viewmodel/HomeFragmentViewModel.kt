@@ -59,15 +59,7 @@ class HomeFragmentViewModel(private var movieListRepository: MovieListRepository
             }
     }
 
-    fun getMovies(): MutableLiveData<Resource<MovieResponse>> {
-        return movies
-    }
-
-    fun getTrendingMovies(): MutableLiveData<Resource<TrendingResponse>> {
-        return trendingMovies
-    }
-
-    fun getTvShows(): MutableLiveData<Resource<TvShowResponse>> {
-        return tvShows
-    }
+    fun getMovies() = movies
+    fun getTrendingMovies() = trendingMovies
+    fun getTvShows() = tvShows
 }

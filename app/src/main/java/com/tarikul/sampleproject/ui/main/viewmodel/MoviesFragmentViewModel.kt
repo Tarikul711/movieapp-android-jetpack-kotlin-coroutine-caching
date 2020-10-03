@@ -30,5 +30,7 @@ class MoviesFragmentViewModel(private var movieListRepository: MovieListReposito
     }
 
 
-    fun getTrendingMovies()=trendingMovies
+    fun getTrendingMovies() = trendingMovies
+    fun getTvShows() = tvShows
+    fun getMovies() = movies
 }
