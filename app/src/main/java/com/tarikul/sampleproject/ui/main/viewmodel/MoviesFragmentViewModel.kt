@@ -47,6 +47,14 @@ class MoviesFragmentViewModel(private var movieListRepository: MovieListReposito
             }
     }
 
+    fun getTvShowData() = viewModelScope.launch {
+        tvShows.postValue(Resource.loading(data = null))
+        movieListRepository.getTvShows()
+            .catch { tvShows.postValue(Resource.error(null, "Error Occurred")) }
+            .collect {
+                tvShows.postValue(Resource.success(it))
+            }
+    }
 
     fun getTrendingMovies() = trendingMovies
     fun getTvShows() = tvShows
