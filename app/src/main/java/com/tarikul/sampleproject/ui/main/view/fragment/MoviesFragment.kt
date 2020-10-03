@@ -17,6 +17,8 @@ import com.tarikul.sampleproject.ui.main.adapter.TvShowListAdapter
 import com.tarikul.sampleproject.ui.main.viewmodel.HomeFragmentViewModel
 import com.tarikul.sampleproject.ui.main.viewmodel.MoviesFragmentViewModel
 import com.tos.androidlivedataviewmodel.projectOne.data.api.ApiHelperImpl
+import com.tos.androidlivedataviewmodel.projectOne.utils.MovieType
+import com.tos.androidlivedataviewmodel.projectOne.utils.MovieType.*
 import com.tos.androidlivedataviewmodel.projectOne.utils.Status
 import com.tos.myapplication.data.api.RetrofitBuilder
 import kotlinx.android.synthetic.main.fragment_movies.*
@@ -51,7 +53,23 @@ class MoviesFragment : Fragment() {
 
     private fun setupView(view: View) {
         view.apply {
-
+            when (args.movieType) {
+                TRENDING -> {
+                    recyclerView.adapter = TrendingMovieAdapter()
+                    moviesFragmentViewModel.getTrendingMoviesData()
+                    setupTrendingMovieObserver()
+                }
+                TVSHOW -> {
+                    recyclerView.adapter = TvShowListAdapter()
+                    moviesFragmentViewModel.getTvShowData()
+                    setupTvShowObserver()
+                }
+                MOVIE -> {
+                    recyclerView.adapter = MovieListAdapter()
+                    moviesFragmentViewModel.getMoviesData()
+                    setupMovieObserver()
+                }
+            }
         }
     }
 
