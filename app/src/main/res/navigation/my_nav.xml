@@ -39,8 +39,8 @@
 
         <argument
             android:name="movie_type"
-            android:defaultValue="movies_trending"
-            app:argType="string" />
+            android:defaultValue="TRENDING"
+            app:argType="com.tos.androidlivedataviewmodel.projectOne.utils.MovieType" />
 
     </fragment>
 </navigation>

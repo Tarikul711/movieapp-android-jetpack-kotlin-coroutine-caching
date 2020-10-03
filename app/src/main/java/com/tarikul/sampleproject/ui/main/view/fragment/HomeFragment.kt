@@ -20,6 +20,8 @@ import com.tarikul.sampleproject.ui.main.adapter.TrendingMovieAdapter
 import com.tarikul.sampleproject.ui.main.adapter.TvShowListAdapter
 import com.tarikul.sampleproject.ui.main.viewmodel.HomeFragmentViewModel
 import com.tos.androidlivedataviewmodel.projectOne.data.api.ApiHelperImpl
+import com.tos.androidlivedataviewmodel.projectOne.utils.MovieType
+import com.tos.androidlivedataviewmodel.projectOne.utils.MovieType.*
 import com.tos.androidlivedataviewmodel.projectOne.utils.Status
 import com.tos.myapplication.data.api.RetrofitBuilder
 import kotlinx.android.synthetic.main.fragment_home.view.*
@@ -75,15 +77,15 @@ class HomeFragment : Fragment() {
 
         view.apply {
             tvTrendingSeeAll.setOnClickListener {
-                val action = HomeFragmentDirections.trendingToMoviesFragment("trendingMovies")
+                val action = HomeFragmentDirections.trendingToMoviesFragment(TRENDING)
                 findNavController().navigate(action)
             }
             tvTvShow.setOnClickListener {
-                val action = HomeFragmentDirections.trendingToMoviesFragment("tvShowMovies")
+                val action = HomeFragmentDirections.trendingToMoviesFragment(TVSHOW)
                 findNavController().navigate(action)
             }
             tvUpComing.setOnClickListener {
-                val action = HomeFragmentDirections.trendingToMoviesFragment("upComingMovies")
+                val action = HomeFragmentDirections.trendingToMoviesFragment(MOVIE)
                 findNavController().navigate(action)
             }
         }

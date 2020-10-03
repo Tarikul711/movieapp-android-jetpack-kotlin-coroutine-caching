@@ -36,8 +36,8 @@ class MoviesFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         val view = inflater.inflate(R.layout.fragment_movies, container, false)
-        setupView(view)
         setupAdapter()
+        setupView(view)
         setupViewModel()
         return view
     }
@@ -51,7 +51,7 @@ class MoviesFragment : Fragment() {
 
     private fun setupView(view: View) {
         view.apply {
-            args.movieType.toString()
+
         }
     }
 
