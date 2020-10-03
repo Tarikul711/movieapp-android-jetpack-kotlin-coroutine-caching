@@ -25,7 +25,7 @@ class MoviesFragment : Fragment() {
 
     private fun setupView(view: View) {
         view.apply {
-            tvTitleText.text = args.movieType.toString()
+            args.movieType.toString()
         }
     }
 }

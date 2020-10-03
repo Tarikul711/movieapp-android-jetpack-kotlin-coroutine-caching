@@ -19,7 +19,7 @@ import kotlinx.coroutines.launch
  *Created by tarikul on 16/9/20
  */
 
-class MovieListViewModel(var movieListRepository: MovieListRepository) : ViewModel() {
+class HomeFragmentViewModel(var movieListRepository: MovieListRepository) : ViewModel() {
 
     private var movies = MutableLiveData<Resource<MovieResponse>>();
     private var trendingMovies = MutableLiveData<Resource<TrendingResponse>>();

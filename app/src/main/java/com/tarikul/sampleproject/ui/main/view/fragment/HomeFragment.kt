@@ -18,7 +18,7 @@ import com.tarikul.sampleproject.ui.base.ViewModelFactory
 import com.tarikul.sampleproject.ui.main.adapter.MovieListAdapter
 import com.tarikul.sampleproject.ui.main.adapter.TrendingMovieAdapter
 import com.tarikul.sampleproject.ui.main.adapter.TvShowListAdapter
-import com.tarikul.sampleproject.ui.main.viewmodel.MovieListViewModel
+import com.tarikul.sampleproject.ui.main.viewmodel.HomeFragmentViewModel
 import com.tos.androidlivedataviewmodel.projectOne.data.api.ApiHelperImpl
 import com.tos.androidlivedataviewmodel.projectOne.utils.Status
 import com.tos.myapplication.data.api.RetrofitBuilder
@@ -29,7 +29,7 @@ class HomeFragment : Fragment() {
     private lateinit var movieListAdapter: MovieListAdapter
     private lateinit var trendingMovieAdapter: TrendingMovieAdapter
     private lateinit var tvShowAdapter: TvShowListAdapter
-    private lateinit var movieViewModel: MovieListViewModel
+    private lateinit var movieViewModel: HomeFragmentViewModel
 
 
     override fun onCreateView(
@@ -118,7 +118,7 @@ class HomeFragment : Fragment() {
         movieViewModel =
             ViewModelProvider(this, ViewModelFactory(ApiHelperImpl(RetrofitBuilder.apiService, 1)))
                 .get(
-                    MovieListViewModel::class.java
+                    HomeFragmentViewModel::class.java
                 )
     }
 
