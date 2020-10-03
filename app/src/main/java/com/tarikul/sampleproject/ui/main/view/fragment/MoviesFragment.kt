@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.navArgs
 import com.tarikul.sampleproject.R
@@ -18,6 +19,7 @@ import com.tarikul.sampleproject.ui.main.viewmodel.MoviesFragmentViewModel
 import com.tos.androidlivedataviewmodel.projectOne.data.api.ApiHelperImpl
 import com.tos.androidlivedataviewmodel.projectOne.utils.Status
 import com.tos.myapplication.data.api.RetrofitBuilder
+import kotlinx.android.synthetic.main.fragment_movies.*
 import kotlinx.android.synthetic.main.fragment_movies.view.*
 
 
@@ -64,6 +66,7 @@ class MoviesFragment : Fragment() {
 
     private fun bindMovieAdapter(results: List<Result>) {
         movieListAdapter.apply {
+            progressbar.visibility = View.GONE
             swapData(results)
             notifyDataSetChanged()
         }
@@ -71,6 +74,7 @@ class MoviesFragment : Fragment() {
 
     private fun bindTrendingMovieAdapter(results: List<com.tarikul.sampleproject.data.model.trending.Result>) {
         trendingMovieAdapter.apply {
+            progressbar.visibility = View.GONE
             swapData(results)
             notifyDataSetChanged()
         }
@@ -78,6 +82,7 @@ class MoviesFragment : Fragment() {
 
     private fun bindTvShowAdapter(results: List<com.tarikul.sampleproject.data.model.tvShows.Result>) {
         tvShowAdapter.apply {
+            progressbar.visibility = View.GONE
             swapData(results)
             notifyDataSetChanged()
         }
@@ -86,8 +91,8 @@ class MoviesFragment : Fragment() {
 
     private fun setupMovieObserver() {
         activity?.let {
-            movieViewModel.getMovies().observe(it, Observer {
-                it.let { resource ->
+            moviesFragmentViewModel.getMovies().observe(it, Observer {
+                it?.let { resource ->
                     when (resource.status) {
                         Status.SUCCESS -> {
                             resource.data?.let { movie -> bindMovieAdapter(movie.results) }
@@ -105,8 +110,8 @@ class MoviesFragment : Fragment() {
 
     private fun setupTrendingMovieObserver() {
         activity?.let {
-            movieViewModel.getTrendingMovies().observe(it, Observer {
-                it.let { resource ->
+            moviesFragmentViewModel.getTrendingMovies().observe(it, Observer {
+                it?.let { resource ->
                     when (resource.status) {
                         Status.SUCCESS -> {
                             resource.data?.let { movie -> bindTrendingMovieAdapter(movie.results) }
@@ -124,8 +129,8 @@ class MoviesFragment : Fragment() {
 
     private fun setupTvShowObserver() {
         activity?.let {
-            movieViewModel.getTvShows().observe(it, Observer {
-                it.let { resource ->
+            moviesFragmentViewModel.getTvShows().observe(it, Observer {
+                it?.let { resource ->
                     when (resource.status) {
                         Status.SUCCESS -> {
                             resource.data?.let { movie -> bindTvShowAdapter(movie.results) }
