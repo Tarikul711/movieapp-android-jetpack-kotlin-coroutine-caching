@@ -46,7 +46,13 @@ class MoviesFragment : Fragment() {
         try {
             setupAdapter()
             setupViewModel()
-            setupView(view)
+//            setupView(view)
+
+            view.recyclerView.layoutManager =
+                LinearLayoutManager(activity, LinearLayoutManager.HORIZONTAL, false)
+            view.recyclerView.adapter = TrendingMovieAdapter()
+            moviesFragmentViewModel.getTrendingMoviesData()
+            setupTrendingMovieObserver()
         } catch (e: Exception) {
             Log.e(TAG, "onCreateView: ${e.message}")
         }

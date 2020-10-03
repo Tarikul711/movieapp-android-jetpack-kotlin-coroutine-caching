@@ -1,5 +1,6 @@
 package com.tarikul.sampleproject.ui.main.adapter
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -21,7 +22,6 @@ import java.util.*
 class TrendingMovieAdapter : RecyclerView.Adapter<TrendingMovieAdapter.MovieListViewHolder>() {
 
     private var data: List<Result> = ArrayList()
-
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MovieListViewHolder {
         return MovieListViewHolder(
             LayoutInflater.from(parent.context)
