@@ -63,4 +63,13 @@ interface ApiService {
     ): MovieResponse
 
 
+    @GET("$MOVIE_DETAILS{movie_id}/similar")
+    suspend fun getSimilarMovies(
+        @Path(value = "movie_id", encoded = true) movie_id: String,
+        @Query(API_KEY) apiKey: String = API_KEY_VALUE,
+        @Query(LANGUAGE) language: String = LANGUAGE_DEFAULT,
+        @Query(PAGE) page: Int
+    ): MovieListResponse
+
+
 }

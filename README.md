@@ -29,3 +29,10 @@ https://api.themoviedb.org/3/discover/tv?api_key=c4519d9993a9c4b6576e45741333593
 get single movie information 
 https://api.themoviedb.org/3/movie/497582?api_key=c4519d9993a9c4b6576e45741333593a&language=en-US
 
+
+get similar movies
+
+https://api.themoviedb.org/3/movie/{movie_id}/similar?api_key=<<api_key>>&language=en-US&page=1
+
+https://api.themoviedb.org/3/movie/497582/similar?api_key=c4519d9993a9c4b6576e45741333593a&language=en-US&page=1
+
