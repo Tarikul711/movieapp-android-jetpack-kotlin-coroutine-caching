@@ -17,9 +17,9 @@ import com.tarikul.sampleproject.data.api.QueryMovie.SORT_BY
 import com.tarikul.sampleproject.data.api.QueryMovie.SORT_BY_DEFAULT
 import com.tarikul.sampleproject.data.api.QueryMovie.TIMEZONE
 import com.tarikul.sampleproject.data.api.QueryMovie.TIMEZONE_DEFAULT
-import com.tarikul.sampleproject.data.model.movieList.MovieResponse
-import com.tarikul.sampleproject.data.model.trendingList.TrendingResponse
-import com.tarikul.sampleproject.data.model.tvShowList.TvShowResponse
+import com.tarikul.sampleproject.data.model.movieList.MovieListResponse
+import com.tarikul.sampleproject.data.model.trendingList.TrendingListResponse
+import com.tarikul.sampleproject.data.model.tvShowList.TvShowListResponse
 import retrofit2.http.GET
 import retrofit2.http.Path
 import retrofit2.http.Query
@@ -33,13 +33,13 @@ interface ApiService {
         @Query(LANGUAGE) language: String = LANGUAGE_DEFAULT,
         @Query(INCLUDE_ADULT) includeAdult: Boolean = INCLUDE_ADULT_DEFAULT,
         @Query(API_KEY) apiKey: String = API_KEY_VALUE
-    ): MovieResponse
+    ): MovieListResponse
 
     @GET("$TRENDING_MOVIE{dayOrWeek}")
     suspend fun getTrendingMovies(
         @Path(value = "dayOrWeek", encoded = true) dayOrWeek: String,
         @Query(API_KEY) apiKey: String = API_KEY_VALUE
-    ): TrendingResponse
+    ): TrendingListResponse
 
 
     @GET(DISCOVER_TV)
@@ -50,6 +50,6 @@ interface ApiService {
         @Query(API_KEY) apiKey: String = API_KEY_VALUE,
         @Query(TIMEZONE) timeZone: String = TIMEZONE_DEFAULT,
         @Query(INCLUDE_NULL_FIRST) includeNull: Boolean = INCLUDE_NULL_FIRST_DEFAULT
-    ): TvShowResponse
+    ): TvShowListResponse
 
 }

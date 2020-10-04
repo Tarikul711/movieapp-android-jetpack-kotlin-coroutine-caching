@@ -1,8 +1,8 @@
 package com.tos.androidlivedataviewmodel.projectOne.data.api
 
-import com.tarikul.sampleproject.data.model.movieList.MovieResponse
-import com.tarikul.sampleproject.data.model.trendingList.TrendingResponse
-import com.tarikul.sampleproject.data.model.tvShowList.TvShowResponse
+import com.tarikul.sampleproject.data.model.movieList.MovieListResponse
+import com.tarikul.sampleproject.data.model.trendingList.TrendingListResponse
+import com.tarikul.sampleproject.data.model.tvShowList.TvShowListResponse
 import com.tos.myapplication.data.api.ApiHelper
 import com.tos.myapplication.data.api.ApiService
 import kotlinx.coroutines.flow.Flow
@@ -13,13 +13,13 @@ import kotlinx.coroutines.flow.flow
  */
 
 class ApiHelperImpl(var apiService: ApiService, var page: Int) : ApiHelper {
-    override suspend fun getMovies(): Flow<MovieResponse> =
+    override suspend fun getMovies(): Flow<MovieListResponse> =
         flow { emit(apiService.getMovies(page)) }
 
-    override suspend fun getTrendingMovies(): Flow<TrendingResponse> =
+    override suspend fun getTrendingMovies(): Flow<TrendingListResponse> =
         flow { emit(apiService.getTrendingMovies("day")) }
 
-    override suspend fun getTvShows(): Flow<TvShowResponse> =
+    override suspend fun getTvShows(): Flow<TvShowListResponse> =
         flow { emit(apiService.getTvShow(page)) }
 
 

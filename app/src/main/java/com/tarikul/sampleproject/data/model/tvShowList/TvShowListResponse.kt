@@ -1,6 +1,6 @@
-package com.tarikul.sampleproject.data.model.movieList
+package com.tarikul.sampleproject.data.model.tvShowList
 
-data class MovieResponse(
+data class TvShowListResponse(
     val page: Int,
     val results: List<Result>,
     val total_pages: Int,

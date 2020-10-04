@@ -3,9 +3,9 @@ package com.tarikul.sampleproject.ui.main.viewmodel
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.tarikul.sampleproject.data.model.movieList.MovieResponse
-import com.tarikul.sampleproject.data.model.trendingList.TrendingResponse
-import com.tarikul.sampleproject.data.model.tvShowList.TvShowResponse
+import com.tarikul.sampleproject.data.model.movieList.MovieListResponse
+import com.tarikul.sampleproject.data.model.trendingList.TrendingListResponse
+import com.tarikul.sampleproject.data.model.tvShowList.TvShowListResponse
 import com.tarikul.sampleproject.data.repository.MovieListRepository
 import com.tos.androidlivedataviewmodel.projectOne.utils.Resource
 import kotlinx.coroutines.flow.catch
@@ -18,9 +18,9 @@ import kotlinx.coroutines.launch
 
 class MoviesFragmentViewModel(private var movieListRepository: MovieListRepository) : ViewModel() {
 
-    private var trendingMovies = MutableLiveData<Resource<TrendingResponse>>()
-    private var tvShows = MutableLiveData<Resource<TvShowResponse>>()
-    private var movies = MutableLiveData<Resource<MovieResponse>>()
+    private var trendingMovies = MutableLiveData<Resource<TrendingListResponse>>()
+    private var tvShows = MutableLiveData<Resource<TvShowListResponse>>()
+    private var movies = MutableLiveData<Resource<MovieListResponse>>()
 
     fun getMoviesData() = viewModelScope.launch {
         movies.postValue(Resource.loading(data = null))

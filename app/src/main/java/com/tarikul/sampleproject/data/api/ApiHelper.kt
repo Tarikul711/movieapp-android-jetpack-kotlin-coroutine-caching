@@ -1,14 +1,14 @@
 package com.tos.myapplication.data.api
 
-import com.tarikul.sampleproject.data.model.movieList.MovieResponse
-import com.tarikul.sampleproject.data.model.trendingList.TrendingResponse
-import com.tarikul.sampleproject.data.model.tvShowList.TvShowResponse
+import com.tarikul.sampleproject.data.model.movieList.MovieListResponse
+import com.tarikul.sampleproject.data.model.trendingList.TrendingListResponse
+import com.tarikul.sampleproject.data.model.tvShowList.TvShowListResponse
 import kotlinx.coroutines.flow.Flow
 
 interface ApiHelper {
 
-    suspend fun getMovies(): Flow<MovieResponse>
-    suspend fun getTrendingMovies(): Flow<TrendingResponse>
-    suspend fun getTvShows(): Flow<TvShowResponse>
+    suspend fun getMovies(): Flow<MovieListResponse>
+    suspend fun getTrendingMovies(): Flow<TrendingListResponse>
+    suspend fun getTvShows(): Flow<TvShowListResponse>
 
 }
