@@ -14,7 +14,7 @@ import kotlinx.coroutines.flow.flow
  */
 
 class ApiHelperImpl(
-    var apiService: ApiService, var page: Int,
+    var apiService: ApiService, var page: Int = 1,
     var movie_id: String = "497582"
 ) : ApiHelper {
     override suspend fun getMovies(): Flow<MovieListResponse> =
