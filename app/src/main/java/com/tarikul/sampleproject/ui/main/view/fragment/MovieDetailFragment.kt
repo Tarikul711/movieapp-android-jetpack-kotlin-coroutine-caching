@@ -11,7 +11,6 @@ import androidx.navigation.fragment.navArgs
 import com.tarikul.sampleproject.R
 import com.tarikul.sampleproject.data.model.movie.MovieResponse
 import com.tarikul.sampleproject.ui.base.ViewModelFactory
-import com.tarikul.sampleproject.ui.main.viewmodel.HomeFragmentViewModel
 import com.tarikul.sampleproject.ui.main.viewmodel.MovieDetailViewModel
 import com.tos.androidlivedataviewmodel.projectOne.data.api.ApiHelperImpl
 import com.tos.androidlivedataviewmodel.projectOne.utils.Status
