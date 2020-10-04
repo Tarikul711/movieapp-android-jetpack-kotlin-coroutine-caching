@@ -14,6 +14,9 @@
             android:id="@+id/trending_to_movies_fragment"
             app:destination="@id/moviesFragment"
             app:popUpTo="@id/homeFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_movieDetailFragment"
+            app:destination="@id/movieDetailFragment" />
     </fragment>
 
     <fragment
@@ -43,4 +46,9 @@
             app:argType="com.tos.androidlivedataviewmodel.projectOne.utils.MovieType" />
 
     </fragment>
+    <fragment
+        android:id="@+id/movieDetailFragment"
+        android:name="com.tarikul.sampleproject.ui.main.view.fragment.MovieDetailFragment"
+        android:label="fragment_movie_detail"
+        tools:layout="@layout/fragment_movie_detail" />
 </navigation>
