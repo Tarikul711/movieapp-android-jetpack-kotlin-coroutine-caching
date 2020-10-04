@@ -22,7 +22,7 @@ class MovieDetailViewModel(private var movieDetailRepository: MovieDetailReposit
         getMovieInfo()
     }
 
-    fun getMovieInfo() = viewModelScope.launch {
+    private fun getMovieInfo() = viewModelScope.launch {
         movieDetail.postValue(Resource.loading(data = null))
         movieDetailRepository.getMovieDetails()
             .catch { movieDetail.postValue(Resource.error(null, "Error Occurred")) }
