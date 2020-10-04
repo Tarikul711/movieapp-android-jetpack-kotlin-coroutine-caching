@@ -29,5 +29,8 @@ class ApiHelperImpl(
     override suspend fun getMovieDetails(): Flow<MovieResponse> =
         flow { emit(apiService.getMovieDetails(movie_id)) }
 
+    override suspend fun getSimilarMovies(): Flow<MovieListResponse> =
+        flow { emit(apiService.getSimilarMovies(movie_id = movie_id, page = page)) }
+
 
 }

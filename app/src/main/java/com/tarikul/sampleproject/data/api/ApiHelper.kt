@@ -12,5 +12,6 @@ interface ApiHelper {
     suspend fun getTrendingMovies(): Flow<TrendingListResponse>
     suspend fun getTvShows(): Flow<TvShowListResponse>
     suspend fun getMovieDetails(): Flow<MovieResponse>
+    suspend fun getSimilarMovies(): Flow<MovieListResponse>
 
 }
