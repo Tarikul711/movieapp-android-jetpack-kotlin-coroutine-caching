@@ -4,7 +4,7 @@ import android.content.Context
 import android.util.AttributeSet
 import android.view.View
 import androidx.constraintlayout.widget.ConstraintLayout
-import com.infinitumcode.mymovieapp.R
+import com.tarikul.sampleproject.R
 import kotlinx.android.synthetic.main.overlap_loading_view_layout.view.*
 
 class OverlapLoadingView @JvmOverloads constructor(

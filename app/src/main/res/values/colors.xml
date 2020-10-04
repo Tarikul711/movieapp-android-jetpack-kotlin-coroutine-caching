@@ -6,4 +6,53 @@
     <color name="bottom_nav_background">#eafbea</color>
     <color name="white">#ffffff</color>
     <color name="black">#000000</color>
+
+
+    <color name="windowBackground">#031F37</color>
+
+    <color name="White_100">#ffffff</color>
+    <color name="White_95">#F2FFFFFF</color>
+    <color name="White_90">#e6ffffff</color>
+    <color name="White_85">#D9FFFFFF</color>
+    <color name="White_80">#CCFFFFFF</color>
+    <color name="White_75">#BFFFFFFF</color>
+    <color name="White_70">#b3ffffff</color>
+    <color name="White_65">#A6FFFFFF</color>
+    <color name="White_60">#99ffffff</color>
+    <color name="White_55">#8CFFFFFF</color>
+    <color name="White_50">#80FFFFFF</color>
+    <color name="White_45">#73FFFFFF</color>
+    <color name="white_43">#E8E6E6</color>
+    <color name="White_40">#66FFFFFF</color>
+    <color name="White_35">#59FFFFFF</color>
+    <color name="White_30">#4DFFFFFF</color>
+    <color name="White_25">#40FFFFFF</color>
+    <color name="White_20">#33FFFFFF</color>
+    <color name="White_15">#26ffffff</color>
+    <color name="White_10">#1AFFFFFF</color>
+    <color name="White_5">#0DFFFFFF</color>
+    <color name="White_0">#00FFFFFF</color>
+
+    <!--black-->
+    <color name="Black_100">#000000</color>
+    <color name="Black_95">#F2000000</color>
+    <color name="Black_90">#E6000000</color>
+    <color name="Black_85">#D9000000</color>
+    <color name="Black_80">#CC000000</color>
+    <color name="Black_75">#BF000000</color>
+    <color name="Black_70">#B3000000</color>
+    <color name="Black_65">#A6000000</color>
+    <color name="Black_60">#99000000</color>
+    <color name="Black_55">#8c000000</color>
+    <color name="Black_50">#80000000</color>
+    <color name="Black_45">#73000000</color>
+    <color name="Black_40">#66000000</color>
+    <color name="Black_35">#59000000</color>
+    <color name="Black_30">#4D000000</color>
+    <color name="Black_25">#40000000</color>
+    <color name="Black_20">#33000000</color>
+    <color name="Black_15">#26000000</color>
+    <color name="Black_10">#1A000000</color>
+    <color name="Black_5">#0D000000</color>
+    <color name="Black_0">#00000000</color>
 </resources>

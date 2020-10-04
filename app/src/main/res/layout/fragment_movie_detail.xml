@@ -1,13 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ui.main.view.fragment.MovieDetailFragment">
 
-    <androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
+    <androidx.core.widget.NestedScrollView
         android:id="@+id/nestedDetail"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -38,11 +37,11 @@
                     android:id="@+id/ivFavorite"
                     android:layout_width="34dp"
                     android:layout_height="34dp"
-                    android:layout_margin="16dp"
                     android:layout_gravity="end|top"
-                    android:tint="@color/colorAccent"
+                    android:layout_margin="16dp"
                     android:background="@drawable/shape_circle"
-                    android:src="@drawable/ic_favorite_border_black_24dp" />
+                    android:src="@drawable/ic_baseline_favorite_border_24"
+                    android:tint="@color/colorAccent" />
 
             </FrameLayout>
 
@@ -100,8 +99,7 @@
                 <androidx.appcompat.widget.AppCompatImageView
                     android:layout_width="20dp"
                     android:layout_height="20dp"
-                    android:tint="@color/material_color_yellow_700"
-                    app:srcCompat="@drawable/ic_star_black_24dp" />
+                    app:srcCompat="@drawable/ic_baseline_star_24" />
 
                 <TextView
                     android:id="@+id/tvVoteAverage"
@@ -109,7 +107,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="5dp"
                     android:layout_marginEnd="5dp"
-                    android:fontFamily="@font/montserrat_light"
+                    android:fontFamily="@font/roboto"
                     android:text="8.9"
                     android:textColor="@color/White_100"
                     android:textSize="14sp" />
@@ -123,7 +121,7 @@
                 android:layout_marginTop="5dp"
                 android:layout_marginEnd="16dp"
                 android:ellipsize="end"
-                android:fontFamily="@font/montserrat_light"
+                android:fontFamily="@font/roboto"
                 android:maxLines="1"
                 android:textColor="@color/White_80"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -135,7 +133,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
-                android:fontFamily="@font/montserrat_thin"
+                android:fontFamily="@font/roboto"
                 android:gravity="center"
                 android:textColor="@color/colorAccent"
                 app:layout_constraintStart_toStartOf="@+id/tvGnreValue"
@@ -154,8 +152,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
-                    android:fontFamily="@font/montserrat_medium"
-                    android:text="@string/description_title"
+                    android:fontFamily="@font/roboto"
+                    android:text="description_title"
                     android:textColor="@color/White_100"
                     android:textSize="18sp"
                     app:layout_constraintStart_toStartOf="parent"
@@ -167,7 +165,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
                     android:layout_marginEnd="16dp"
-                    android:fontFamily="@font/montserrat_light"
+                    android:fontFamily="@font/roboto"
                     android:textColor="@color/White_70"
                     android:textSize="16sp"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -179,8 +177,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
-                    android:fontFamily="@font/montserrat_medium"
-                    android:text="@string/tagline"
+                    android:fontFamily="@font/roboto"
+                    android:text="tagline"
                     android:textColor="@color/White_100"
                     android:textSize="18sp"
                     app:layout_constraintEnd_toEndOf="@+id/tvDescriptionValue"
@@ -191,11 +189,11 @@
                     android:id="@+id/tvQuoteValue"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
-                    android:layout_marginBottom="16dp"
                     android:layout_marginStart="16dp"
+                    android:layout_marginTop="8dp"
                     android:layout_marginEnd="16dp"
-                    android:fontFamily="@font/montserrat_light_italic"
+                    android:layout_marginBottom="16dp"
+                    android:fontFamily="@font/roboto"
                     android:textAlignment="center"
                     android:textColor="@color/White_70"
                     android:textSize="16sp"
@@ -211,7 +209,7 @@
                     android:layout_marginStart="16dp"
                     android:layout_marginTop="16dp"
                     android:fontFamily="@font/roboto"
-                    android:text="@string/actor_title"
+                    android:text="actor_title"
                     android:textColor="@color/white"
                     android:textSize="18sp"
                     app:layout_constraintStart_toStartOf="parent"
@@ -228,8 +226,9 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/tvActorsTitle"
-                    tools:listitem="@layout/actor_view_layout"
                     tools:orientation="horizontal" />
+
+                <!--                tools:listitem="@layout/actor_view_layout"-->
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
