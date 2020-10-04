@@ -2,8 +2,10 @@ package com.tarikul.sampleproject.ui.base
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
+import com.tarikul.sampleproject.data.repository.MovieDetailRepository
 import com.tarikul.sampleproject.data.repository.MovieListRepository
 import com.tarikul.sampleproject.ui.main.viewmodel.HomeFragmentViewModel
+import com.tarikul.sampleproject.ui.main.viewmodel.MovieDetailViewModel
 import com.tarikul.sampleproject.ui.main.viewmodel.MoviesFragmentViewModel
 import com.tos.myapplication.data.api.ApiHelper
 
@@ -18,6 +20,9 @@ class ViewModelFactory(val apiHelper: ApiHelper) : ViewModelProvider.Factory {
         }
         if (modelClass.isAssignableFrom(MoviesFragmentViewModel::class.java)) {
             return MoviesFragmentViewModel(MovieListRepository(apiHelper)) as T
+        }
+        if (modelClass.isAssignableFrom(MovieDetailViewModel::class.java)) {
+            return MovieDetailViewModel(MovieDetailRepository(apiHelper)) as T
         }
         throw IllegalArgumentException("Unknown class name")
     }
