@@ -3,6 +3,7 @@ package com.tarikul.sampleproject.ui.main.adapter
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.bitmap.CenterCrop
@@ -11,6 +12,8 @@ import com.bumptech.glide.request.RequestOptions
 import com.tarikul.sampleproject.R
 import com.tarikul.sampleproject.data.api.BaseUrl.BASE_IMAGES_URL
 import com.tarikul.sampleproject.data.model.movieList.Result
+import com.tarikul.sampleproject.ui.main.view.fragment.HomeFragmentDirections
+import com.tos.androidlivedataviewmodel.projectOne.utils.MovieType
 import kotlinx.android.synthetic.main.item_movie.view.*
 import java.util.*
 
@@ -54,7 +57,9 @@ class MovieListAdapter : RecyclerView.Adapter<MovieListAdapter.MovieListViewHold
 
             }
             setOnClickListener {
-                // TODO: Handle on click
+                val action =
+                    HomeFragmentDirections.actionHomeFragmentToMovieDetailFragment(item.id.toString())
+                findNavController().navigate(action)
             }
         }
     }

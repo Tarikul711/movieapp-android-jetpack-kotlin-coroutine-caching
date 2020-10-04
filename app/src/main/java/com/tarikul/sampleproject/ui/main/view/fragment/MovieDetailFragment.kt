@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.navArgs
 import com.tarikul.sampleproject.R
 import com.tarikul.sampleproject.ui.base.ViewModelFactory
 import com.tarikul.sampleproject.ui.main.viewmodel.HomeFragmentViewModel
@@ -16,6 +17,7 @@ import com.tos.myapplication.data.api.RetrofitBuilder
 class MovieDetailFragment : Fragment() {
 
     private lateinit var movieDetailViewModel: MovieDetailViewModel
+//    private var args: MovieDetailFragmentArgs by navArgs()
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?

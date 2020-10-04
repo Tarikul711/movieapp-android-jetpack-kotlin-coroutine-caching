@@ -50,5 +50,10 @@
         android:id="@+id/movieDetailFragment"
         android:name="com.tarikul.sampleproject.ui.main.view.fragment.MovieDetailFragment"
         android:label="fragment_movie_detail"
-        tools:layout="@layout/fragment_movie_detail" />
+        tools:layout="@layout/fragment_movie_detail" >
+        <argument
+            android:name="movie_id"
+            app:argType="string"
+            android:defaultValue="497582" />
+    </fragment>
 </navigation>
