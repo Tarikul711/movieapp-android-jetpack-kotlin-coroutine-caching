@@ -4,8 +4,7 @@ import android.content.Context
 import android.util.AttributeSet
 import android.view.View
 import androidx.constraintlayout.widget.ConstraintLayout
-import com.infinitumcode.mymovieapp.R
-import kotlinx.android.synthetic.main.empty_view_layout.view.*
+import com.tarikul.sampleproject.R
 
 class EmptyView @JvmOverloads constructor(
     context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0
