@@ -17,13 +17,14 @@ import com.tos.myapplication.data.api.RetrofitBuilder
 class MovieDetailFragment : Fragment() {
 
     private lateinit var movieDetailViewModel: MovieDetailViewModel
-//    private var args: MovieDetailFragmentArgs by navArgs()
+    private val args: MovieDetailFragmentArgs by navArgs()
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
         val view = inflater.inflate(R.layout.fragment_movie_detail, container, false)
+        setupViewModel()
 
         return view
     }
@@ -36,7 +37,7 @@ class MovieDetailFragment : Fragment() {
                 ViewModelFactory(
                     ApiHelperImpl(
                         apiService = RetrofitBuilder.apiService,
-                        movie_id = ""
+                        movie_id = args.movieId
                     )
                 )
             )
@@ -45,6 +46,8 @@ class MovieDetailFragment : Fragment() {
                 )
     }
 
-    private fun setupMovieDetailObserver() {}
+    private fun setupMovieDetailObserver() {
+
+    }
 
 }
