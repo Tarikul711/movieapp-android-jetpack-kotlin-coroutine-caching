@@ -1,4 +1,4 @@
-package com.tarikul.sampleproject.data.model.trending
+package com.tarikul.sampleproject.data.model.trendingList
 
 data class TrendingResponse(
     val page: Int,

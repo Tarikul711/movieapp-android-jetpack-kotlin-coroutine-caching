@@ -1,8 +1,8 @@
 package com.tos.myapplication.data.api
 
-import com.tarikul.sampleproject.data.model.movies.MovieResponse
-import com.tarikul.sampleproject.data.model.trending.TrendingResponse
-import com.tarikul.sampleproject.data.model.tvShows.TvShowResponse
+import com.tarikul.sampleproject.data.model.movieList.MovieResponse
+import com.tarikul.sampleproject.data.model.trendingList.TrendingResponse
+import com.tarikul.sampleproject.data.model.tvShowList.TvShowResponse
 import kotlinx.coroutines.flow.Flow
 
 interface ApiHelper {

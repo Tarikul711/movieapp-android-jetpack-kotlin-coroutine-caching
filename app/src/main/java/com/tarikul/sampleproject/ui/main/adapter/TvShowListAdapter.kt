@@ -10,7 +10,7 @@ import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.bumptech.glide.request.RequestOptions
 import com.tarikul.sampleproject.R
 import com.tarikul.sampleproject.data.api.BaseUrl.BASE_IMAGES_URL
-import com.tarikul.sampleproject.data.model.tvShows.Result
+import com.tarikul.sampleproject.data.model.tvShowList.Result
 import kotlinx.android.synthetic.main.item_movie.view.*
 import java.util.*
 

@@ -24,3 +24,8 @@ https://api.themoviedb.org/3/discover/tv?api_key=c4519d9993a9c4b6576e45741333593
 // 20200930114204
 // https://api.themoviedb.org/3/trending/all/day?api_key=c4519d9993a9c4b6576e45741333593a
 
+
+
+get single movie information 
+https://api.themoviedb.org/3/movie/497582?api_key=c4519d9993a9c4b6576e45741333593a&language=en-US
+

@@ -17,9 +17,9 @@ import com.tarikul.sampleproject.data.api.QueryMovie.SORT_BY
 import com.tarikul.sampleproject.data.api.QueryMovie.SORT_BY_DEFAULT
 import com.tarikul.sampleproject.data.api.QueryMovie.TIMEZONE
 import com.tarikul.sampleproject.data.api.QueryMovie.TIMEZONE_DEFAULT
-import com.tarikul.sampleproject.data.model.movies.MovieResponse
-import com.tarikul.sampleproject.data.model.trending.TrendingResponse
-import com.tarikul.sampleproject.data.model.tvShows.TvShowResponse
+import com.tarikul.sampleproject.data.model.movieList.MovieResponse
+import com.tarikul.sampleproject.data.model.trendingList.TrendingResponse
+import com.tarikul.sampleproject.data.model.tvShowList.TvShowResponse
 import retrofit2.http.GET
 import retrofit2.http.Path
 import retrofit2.http.Query

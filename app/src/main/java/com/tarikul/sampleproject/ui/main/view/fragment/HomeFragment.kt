@@ -11,16 +11,15 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.tarikul.sampleproject.R
-import com.tarikul.sampleproject.data.model.movies.Result as Result
-import com.tarikul.sampleproject.data.model.trending.Result as TrendResult
-import com.tarikul.sampleproject.data.model.tvShows.Result as TvShowResult
+import com.tarikul.sampleproject.data.model.movieList.Result as Result
+import com.tarikul.sampleproject.data.model.trendingList.Result as TrendResult
+import com.tarikul.sampleproject.data.model.tvShowList.Result as TvShowResult
 import com.tarikul.sampleproject.ui.base.ViewModelFactory
 import com.tarikul.sampleproject.ui.main.adapter.MovieListAdapter
 import com.tarikul.sampleproject.ui.main.adapter.TrendingMovieAdapter
 import com.tarikul.sampleproject.ui.main.adapter.TvShowListAdapter
 import com.tarikul.sampleproject.ui.main.viewmodel.HomeFragmentViewModel
 import com.tos.androidlivedataviewmodel.projectOne.data.api.ApiHelperImpl
-import com.tos.androidlivedataviewmodel.projectOne.utils.MovieType
 import com.tos.androidlivedataviewmodel.projectOne.utils.MovieType.*
 import com.tos.androidlivedataviewmodel.projectOne.utils.Status
 import com.tos.myapplication.data.api.RetrofitBuilder

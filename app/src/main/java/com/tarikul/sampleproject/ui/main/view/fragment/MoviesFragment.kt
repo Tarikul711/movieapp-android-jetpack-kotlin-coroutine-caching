@@ -1,7 +1,6 @@
 package com.tarikul.sampleproject.ui.main.view.fragment
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -9,12 +8,11 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.navArgs
-import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.tarikul.sampleproject.R
-import com.tarikul.sampleproject.data.model.movies.Result
-import com.tarikul.sampleproject.data.model.trending.Result as TrendingResult
-import com.tarikul.sampleproject.data.model.tvShows.Result as TvShowResult
+import com.tarikul.sampleproject.data.model.movieList.Result
+import com.tarikul.sampleproject.data.model.trendingList.Result as TrendingResult
+import com.tarikul.sampleproject.data.model.tvShowList.Result as TvShowResult
 import com.tarikul.sampleproject.ui.base.ViewModelFactory
 import com.tarikul.sampleproject.ui.main.adapter.MovieListAdapter
 import com.tarikul.sampleproject.ui.main.adapter.TrendingMovieAdapter
@@ -24,8 +22,6 @@ import com.tos.androidlivedataviewmodel.projectOne.data.api.ApiHelperImpl
 import com.tos.androidlivedataviewmodel.projectOne.utils.MovieType.*
 import com.tos.androidlivedataviewmodel.projectOne.utils.Status
 import com.tos.myapplication.data.api.RetrofitBuilder
-import kotlinx.android.synthetic.main.fragment_home.view.*
-import kotlinx.android.synthetic.main.fragment_movies.*
 import kotlinx.android.synthetic.main.fragment_movies.view.*
 import kotlinx.android.synthetic.main.fragment_movies.view.recyclerView
 
@@ -43,19 +39,11 @@ class MoviesFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         val view = inflater.inflate(R.layout.fragment_movies, container, false)
-        try {
-            setupAdapter()
-            setupViewModel()
-//            setupView(view)
 
-            view.recyclerView.layoutManager =
-                LinearLayoutManager(activity, LinearLayoutManager.HORIZONTAL, false)
-            view.recyclerView.adapter = TrendingMovieAdapter()
-            moviesFragmentViewModel.getTrendingMoviesData()
-            setupTrendingMovieObserver()
-        } catch (e: Exception) {
-            Log.e(TAG, "onCreateView: ${e.message}")
-        }
+        setupAdapter()
+        setupViewModel()
+        setupView(view)
+
         return view
     }
 
@@ -72,6 +60,7 @@ class MoviesFragment : Fragment() {
                 LinearLayoutManager(activity, LinearLayoutManager.HORIZONTAL, false)
             when (args.movieType) {
                 TRENDING -> {
+                    textView5.text = "TRENDING.toString()"
                     recyclerView.adapter = TrendingMovieAdapter()
                     moviesFragmentViewModel.getTrendingMoviesData()
                     setupTrendingMovieObserver()

@@ -11,7 +11,7 @@ import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.bumptech.glide.request.RequestOptions
 import com.tarikul.sampleproject.R
 import com.tarikul.sampleproject.data.api.BaseUrl.BASE_IMAGES_URL
-import com.tarikul.sampleproject.data.model.trending.Result
+import com.tarikul.sampleproject.data.model.trendingList.Result
 import kotlinx.android.synthetic.main.item_movie.view.*
 import java.util.*
 
@@ -22,7 +22,9 @@ import java.util.*
 class TrendingMovieAdapter : RecyclerView.Adapter<TrendingMovieAdapter.MovieListViewHolder>() {
 
     private var data: List<Result> = ArrayList()
+    private val TAG = "TrendingMovieAdapter"
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MovieListViewHolder {
+        Log.e(TAG, "onCreateViewHolder: ")
         return MovieListViewHolder(
             LayoutInflater.from(parent.context)
                 .inflate(R.layout.item_trending, parent, false)
@@ -31,16 +33,21 @@ class TrendingMovieAdapter : RecyclerView.Adapter<TrendingMovieAdapter.MovieList
 
     override fun getItemCount() = data.size
 
-    override fun onBindViewHolder(holder: MovieListViewHolder, position: Int) =
-        holder.bind(data[position])
+    override fun onBindViewHolder(holder: MovieListViewHolder, position: Int) {
+        Log.e(TAG, "onBindViewHolder: ")
+        return holder.bind(data[position])
+    }
 
     fun swapData(data: List<Result>) {
         this.data = data
+        Log.e(TAG, "swapData: " + data.size)
         notifyDataSetChanged()
     }
 
     class MovieListViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+        private val TAG = "TrendingMovieAdapter"
         fun bind(item: Result) = with(itemView) {
+            Log.e(TAG, "bind: ")
             itemView.apply {
                 var requestOptions = RequestOptions()
                 requestOptions = requestOptions.transforms(CenterCrop(), RoundedCorners(10))

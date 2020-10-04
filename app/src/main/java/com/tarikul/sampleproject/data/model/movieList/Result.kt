@@ -1,4 +1,4 @@
-package com.tarikul.sampleproject.data.model.movies
+package com.tarikul.sampleproject.data.model.movieList
 
 data class Result(
     val adult: Boolean,
