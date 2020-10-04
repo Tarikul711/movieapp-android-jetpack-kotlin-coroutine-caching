@@ -75,7 +75,7 @@
                 android:fontFamily="@font/roboto"
                 android:marqueeRepeatLimit="marquee_forever"
                 android:singleLine="true"
-                android:textColor="@color/white"
+                android:textColor="@color/colorAccent"
                 android:textSize="20sp"
                 app:layout_constraintBottom_toBottomOf="@+id/flBackdrop"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -123,7 +123,8 @@
                 android:ellipsize="end"
                 android:fontFamily="@font/roboto"
                 android:maxLines="1"
-                android:textColor="@color/White_80"
+                android:text="Hello"
+                android:textColor="@color/Black_90"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="@+id/tvMovieTitleValue"
                 app:layout_constraintTop_toBottomOf="@+id/tvMovieTitleValue" />
@@ -135,7 +136,8 @@
                 android:layout_marginTop="5dp"
                 android:fontFamily="@font/roboto"
                 android:gravity="center"
-                android:textColor="@color/colorAccent"
+                android:text="50 min"
+                android:textColor="@color/Black_100"
                 app:layout_constraintStart_toStartOf="@+id/tvGnreValue"
                 app:layout_constraintTop_toBottomOf="@+id/tvGnreValue" />
 
@@ -144,7 +146,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
-                android:visibility="gone"
                 app:layout_constraintTop_toBottomOf="@+id/cardView2">
 
                 <TextView
@@ -154,7 +155,7 @@
                     android:layout_marginStart="16dp"
                     android:fontFamily="@font/roboto"
                     android:text="description_title"
-                    android:textColor="@color/White_100"
+                    android:textColor="@color/Black_80"
                     android:textSize="18sp"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
@@ -166,7 +167,7 @@
                     android:layout_marginTop="8dp"
                     android:layout_marginEnd="16dp"
                     android:fontFamily="@font/roboto"
-                    android:textColor="@color/White_70"
+                    android:textColor="@color/Black_70"
                     android:textSize="16sp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="@+id/tvDescriptionTitle"
@@ -179,7 +180,7 @@
                     android:layout_marginTop="16dp"
                     android:fontFamily="@font/roboto"
                     android:text="tagline"
-                    android:textColor="@color/White_100"
+                    android:textColor="@color/Black_85"
                     android:textSize="18sp"
                     app:layout_constraintEnd_toEndOf="@+id/tvDescriptionValue"
                     app:layout_constraintStart_toStartOf="@+id/tvDescriptionValue"
@@ -195,7 +196,7 @@
                     android:layout_marginBottom="16dp"
                     android:fontFamily="@font/roboto"
                     android:textAlignment="center"
-                    android:textColor="@color/White_70"
+                    android:textColor="@color/Black_70"
                     android:textSize="16sp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -209,8 +210,8 @@
                     android:layout_marginStart="16dp"
                     android:layout_marginTop="16dp"
                     android:fontFamily="@font/roboto"
-                    android:text="actor_title"
-                    android:textColor="@color/white"
+                    android:text="Actors"
+                    android:textColor="@color/Black_50"
                     android:textSize="18sp"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/tvDescriptionValue" />

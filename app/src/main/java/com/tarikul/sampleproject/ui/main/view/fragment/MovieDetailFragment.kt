@@ -78,8 +78,14 @@ class MovieDetailFragment : Fragment() {
             Glide.with(ivPoster)
                 .load("${BaseUrl.BASE_IMAGES_URL}${movie.poster_path}")
                 .into(ivPoster)
-            tvMovieTitleValue.text=movie.title
-            tvVoteAverage.text ==movie.vote_average.toString()
+            tvMovieTitleValue.text = movie.title
+            tvVoteAverage.text = movie.vote_average.toString()
+
+            tvDescriptionTitle.text = "Description"
+            tvDescriptionValue.text = movie.overview
+            tvQuoteValue.text = movie.status
+            tvTaglineTitle.text = movie.tagline
+
         }
     }
 
