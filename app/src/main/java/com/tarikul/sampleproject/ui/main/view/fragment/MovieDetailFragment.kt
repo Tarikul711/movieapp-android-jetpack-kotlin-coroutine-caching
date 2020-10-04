@@ -8,7 +8,9 @@ import android.view.ViewGroup
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.navArgs
+import com.bumptech.glide.Glide
 import com.tarikul.sampleproject.R
+import com.tarikul.sampleproject.data.api.BaseUrl
 import com.tarikul.sampleproject.data.model.movie.MovieResponse
 import com.tarikul.sampleproject.ui.base.ViewModelFactory
 import com.tarikul.sampleproject.ui.main.viewmodel.MovieDetailViewModel
@@ -69,7 +71,15 @@ class MovieDetailFragment : Fragment() {
 
     private fun setupUI(movie: MovieResponse, view: View) {
         view.apply {
-            tvMovieTitle.text = movie.original_title
+            Glide.with(ivBackdrop)
+                .load("${BaseUrl.BASE_IMAGES_URL}${movie.backdrop_path}")
+                .into(ivBackdrop)
+
+            Glide.with(ivPoster)
+                .load("${BaseUrl.BASE_IMAGES_URL}${movie.poster_path}")
+                .into(ivPoster)
+            tvMovieTitleValue.text=movie.title
+            tvVoteAverage.text ==movie.vote_average.toString()
         }
     }
 
