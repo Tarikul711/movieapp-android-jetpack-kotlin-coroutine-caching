@@ -3,6 +3,7 @@ package com.tos.myapplication.data.api
 
 import com.tarikul.sampleproject.data.api.Endpoint.DISCOVER_MOVIE
 import com.tarikul.sampleproject.data.api.Endpoint.DISCOVER_TV
+import com.tarikul.sampleproject.data.api.Endpoint.MOVIE_DETAILS
 import com.tarikul.sampleproject.data.api.Endpoint.TRENDING_MOVIE
 import com.tarikul.sampleproject.data.api.QueryMovie.API_KEY
 import com.tarikul.sampleproject.data.api.QueryMovie.API_KEY_VALUE
@@ -17,6 +18,7 @@ import com.tarikul.sampleproject.data.api.QueryMovie.SORT_BY
 import com.tarikul.sampleproject.data.api.QueryMovie.SORT_BY_DEFAULT
 import com.tarikul.sampleproject.data.api.QueryMovie.TIMEZONE
 import com.tarikul.sampleproject.data.api.QueryMovie.TIMEZONE_DEFAULT
+import com.tarikul.sampleproject.data.model.movie.MovieResponse
 import com.tarikul.sampleproject.data.model.movieList.MovieListResponse
 import com.tarikul.sampleproject.data.model.trendingList.TrendingListResponse
 import com.tarikul.sampleproject.data.model.tvShowList.TvShowListResponse
@@ -51,5 +53,14 @@ interface ApiService {
         @Query(TIMEZONE) timeZone: String = TIMEZONE_DEFAULT,
         @Query(INCLUDE_NULL_FIRST) includeNull: Boolean = INCLUDE_NULL_FIRST_DEFAULT
     ): TvShowListResponse
+
+
+    @GET("$MOVIE_DETAILS{movie_id}")
+    suspend fun getMovieDetails(
+        @Path(value = "movie_id", encoded = true) movie_id: String,
+        @Query(API_KEY) apiKey: String = API_KEY_VALUE,
+        @Query(LANGUAGE) language: String = LANGUAGE_DEFAULT
+    ): MovieResponse
+
 
 }
