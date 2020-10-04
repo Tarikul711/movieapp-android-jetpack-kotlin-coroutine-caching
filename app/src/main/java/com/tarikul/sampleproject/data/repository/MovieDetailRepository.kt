@@ -11,5 +11,4 @@ class MovieDetailRepository(private var apiHelper: ApiHelper) {
     suspend fun getMovieDetails() = apiHelper.getMovieDetails()
     suspend fun getSimilarMovies() = apiHelper.getSimilarMovies()
 
-
 }
