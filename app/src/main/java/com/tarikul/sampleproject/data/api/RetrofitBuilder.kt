@@ -86,8 +86,13 @@ object RetrofitBuilder {
     class ForceCacheInterceptor : Interceptor {
         override fun intercept(chain: Interceptor.Chain): Response {
             val builder: Request.Builder = chain.request().newBuilder()
+                .removeHeader(HEADER_PRAGMA)
+                .removeHeader(HEADER_CACHE_CONTROL)
             if (!NetworkUtils.hasNetwork(MyApplication.instance.applicationContext)!!) {
-                builder.cacheControl(CacheControl.FORCE_CACHE)
+                val cacheControl: CacheControl = CacheControl.Builder()
+                    .maxStale(7, TimeUnit.DAYS).build()
+//                builder.cacheControl(CacheControl.FORCE_CACHE)  // for force cache control
+                builder.cacheControl(cacheControl)
 
             }
             return chain.proceed(builder.build())
