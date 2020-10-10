@@ -66,11 +66,13 @@ class MoviesFragment : Fragment() {
                     setupTrendingMovieObserver()
                 }
                 TVSHOW -> {
+                    textView5.text = "TVSHOW.toString()"
                     recyclerView.adapter = TvShowListAdapter()
                     moviesFragmentViewModel.getTvShowData()
                     setupTvShowObserver()
                 }
                 MOVIE -> {
+                    textView5.text = "MOVIE.toString()"
                     recyclerView.adapter = MovieListAdapter()
                     moviesFragmentViewModel.getMoviesData()
                     setupMovieObserver()
