@@ -1,5 +1,6 @@
 package com.tos.myapplication.data.api
 
+import android.util.Log
 import com.tarikul.sampleproject.data.api.BaseUrl.API_BASE_URL
 import com.tos.android_retrofit_mvvm_jetpack_kotlin.MyApplication
 import com.tos.android_retrofit_mvvm_jetpack_kotlin.utils.NetworkUtils
@@ -14,8 +15,8 @@ import java.util.concurrent.TimeUnit
  *Created by tarikul on 5/9/20
  */
 object RetrofitBuilder {
-    // Caching data from online
-    var cacheSize: Long = 5 * 1024 * 1024;
+    var cacheSize: Long = 5 * 1024 * 1024
+    private val TAG = "RetrofitBuilder"
     var HEADER_CACHE_CONTROL: String = "Cache-Control"
     var HEADER_PRAGMA: String = "Pragma"
 
@@ -25,7 +26,7 @@ object RetrofitBuilder {
             .cache(cache())
             .addInterceptor(httpLoggingInterceptor())
             .addNetworkInterceptor(NetworkInterceptor())
-            .addInterceptor(OfflineInterceptor())
+            .addInterceptor(ForceCacheInterceptor())
 
 
     private fun getRetrofit(): Retrofit {
@@ -60,25 +61,36 @@ object RetrofitBuilder {
                 .removeHeader(HEADER_PRAGMA)
                 .removeHeader(HEADER_CACHE_CONTROL)
                 .header(HEADER_CACHE_CONTROL, cacheControl.toString())
-                .build();
+                .build()
         }
     }
 
     class OfflineInterceptor : Interceptor {
         override fun intercept(chain: Interceptor.Chain): Response {
             val request = chain.request()
-
             if (!NetworkUtils.hasNetwork(MyApplication.instance.applicationContext)!!) {
                 val cacheControl: CacheControl = CacheControl.Builder()
                     .maxStale(7, TimeUnit.DAYS).build()
+                Log.e(TAG, "intercept: offline")
                 request.newBuilder()
                     .removeHeader(HEADER_PRAGMA)
                     .removeHeader(HEADER_CACHE_CONTROL)
                     .cacheControl(cacheControl)
-                    .build();
+                    .build()
             }
 
             return chain.proceed(request)
+        }
+    }
+
+    class ForceCacheInterceptor : Interceptor {
+        override fun intercept(chain: Interceptor.Chain): Response {
+            val builder: Request.Builder = chain.request().newBuilder()
+            if (!NetworkUtils.hasNetwork(MyApplication.instance.applicationContext)!!) {
+                builder.cacheControl(CacheControl.FORCE_CACHE)
+
+            }
+            return chain.proceed(builder.build())
         }
     }
 
