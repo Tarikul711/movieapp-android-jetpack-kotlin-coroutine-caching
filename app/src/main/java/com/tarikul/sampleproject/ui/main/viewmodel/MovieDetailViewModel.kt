@@ -4,6 +4,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.tarikul.sampleproject.data.model.movie.MovieResponse
+import com.tarikul.sampleproject.data.model.movieList.MovieListResponse
 import com.tarikul.sampleproject.data.repository.MovieDetailRepository
 import com.tos.androidlivedataviewmodel.projectOne.utils.Resource
 import kotlinx.coroutines.flow.catch
@@ -17,6 +18,7 @@ import kotlinx.coroutines.launch
 class MovieDetailViewModel(private var movieDetailRepository: MovieDetailRepository) : ViewModel() {
 
     private var movieDetail = MutableLiveData<Resource<MovieResponse>>()
+    private var similarMovies = MutableLiveData<Resource<MovieListResponse>>()
 
     init {
         getMovieInfo()
@@ -31,5 +33,15 @@ class MovieDetailViewModel(private var movieDetailRepository: MovieDetailReposit
             }
     }
 
+    private fun getSimilarMovieInfo() = viewModelScope.launch {
+        similarMovies.postValue(Resource.loading(data = null))
+        movieDetailRepository.getSimilarMovies()
+            .catch { similarMovies.postValue(Resource.error(null, "Error Occurred")) }
+            .collect {
+                similarMovies.postValue(Resource.success(it))
+            }
+    }
+
     fun getMovieDetail() = movieDetail
+    fun getSimilarMovieDetail() = similarMovies
 }

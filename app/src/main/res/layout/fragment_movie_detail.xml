@@ -99,6 +99,7 @@
                 <androidx.appcompat.widget.AppCompatImageView
                     android:layout_width="20dp"
                     android:layout_height="20dp"
+                    android:tint="@color/White_100"
                     app:srcCompat="@drawable/ic_baseline_star_24" />
 
                 <TextView
@@ -218,7 +219,7 @@
                     app:layout_constraintTop_toBottomOf="@+id/tvDescriptionValue" />
 
                 <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/actors"
+                    android:id="@+id/similarMovieRecyclerview"
                     android:layout_width="match_parent"
                     android:layout_height="180dp"
                     android:clipToPadding="false"
