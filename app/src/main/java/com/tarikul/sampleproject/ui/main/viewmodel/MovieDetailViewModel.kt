@@ -22,6 +22,7 @@ class MovieDetailViewModel(private var movieDetailRepository: MovieDetailReposit
 
     init {
         getMovieInfo()
+        getSimilarMovieInfo()
     }
 
     private fun getMovieInfo() = viewModelScope.launch {

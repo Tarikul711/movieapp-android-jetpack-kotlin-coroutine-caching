@@ -69,6 +69,10 @@ class MovieDetailFragment : Fragment() {
         }
     }
 
+    private fun setupSimilarMovieObserver(view: View) {
+
+    }
+
     private fun setupUI(movie: MovieResponse, view: View) {
         view.apply {
             Glide.with(ivBackdrop)
