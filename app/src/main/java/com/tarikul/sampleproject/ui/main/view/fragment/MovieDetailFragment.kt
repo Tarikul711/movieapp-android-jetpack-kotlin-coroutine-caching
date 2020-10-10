@@ -8,11 +8,14 @@ import android.view.ViewGroup
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.navArgs
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
 import com.tarikul.sampleproject.R
 import com.tarikul.sampleproject.data.api.BaseUrl
 import com.tarikul.sampleproject.data.model.movie.MovieResponse
+import com.tarikul.sampleproject.data.model.movieList.MovieListResponse
 import com.tarikul.sampleproject.ui.base.ViewModelFactory
+import com.tarikul.sampleproject.ui.main.adapter.MovieListAdapter
 import com.tarikul.sampleproject.ui.main.viewmodel.MovieDetailViewModel
 import com.tos.androidlivedataviewmodel.projectOne.data.api.ApiHelperImpl
 import com.tos.androidlivedataviewmodel.projectOne.utils.Status
@@ -21,6 +24,7 @@ import kotlinx.android.synthetic.main.fragment_movie_detail.view.*
 
 class MovieDetailFragment : Fragment() {
 
+    private lateinit var movieListAdapter: MovieListAdapter
     private lateinit var movieDetailViewModel: MovieDetailViewModel
     private val args: MovieDetailFragmentArgs by navArgs()
     override fun onCreateView(
@@ -30,8 +34,19 @@ class MovieDetailFragment : Fragment() {
         // Inflate the layout for this fragment
         val view = inflater.inflate(R.layout.fragment_movie_detail, container, false)
         setupViewModel()
+        setupRecyclerView(view)
         setupMovieDetailObserver(view)
+        setupSimilarMovieObserver(view)
         return view
+    }
+
+    private fun setupRecyclerView(view: View) {
+        movieListAdapter = MovieListAdapter()
+        view.apply {
+            similarMovieRecyclerview.layoutManager =
+                LinearLayoutManager(activity, LinearLayoutManager.HORIZONTAL, false)
+            similarMovieRecyclerview.adapter = movieListAdapter
+        }
     }
 
     private fun setupViewModel() {
@@ -70,7 +85,22 @@ class MovieDetailFragment : Fragment() {
     }
 
     private fun setupSimilarMovieObserver(view: View) {
+        activity?.let {
+            movieDetailViewModel.getSimilarMovieDetail().observe(it, Observer {
+                it?.let { resource ->
+                    when (resource.status) {
+                        Status.SUCCESS -> {
+                            resource.data?.let { movie -> setupSimilarMoviesUI(view, movie) }
+                        }
+                        Status.ERROR -> {
+                        }
+                        Status.LOADING -> {
+                        }
+                    }
 
+                }
+            })
+        }
     }
 
     private fun setupUI(movie: MovieResponse, view: View) {
@@ -90,6 +120,13 @@ class MovieDetailFragment : Fragment() {
             tvQuoteValue.text = movie.status
             tvTaglineTitle.text = movie.tagline
 
+        }
+    }
+
+    private fun setupSimilarMoviesUI(view: View, movies: MovieListResponse) {
+        movieListAdapter.apply {
+            swapData(movies.results)
+            notifyDataSetChanged()
         }
     }
 
