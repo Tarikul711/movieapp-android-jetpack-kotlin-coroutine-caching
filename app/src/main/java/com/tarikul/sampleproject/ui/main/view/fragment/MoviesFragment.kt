@@ -61,19 +61,19 @@ class MoviesFragment : Fragment() {
                 GridLayoutManager(context, 3)
             when (args.movieType) {
                 TRENDING -> {
-                    textView5.text = "TRENDING.toString()"
+                    textView5.text = "TRENDING MOVIES"
                     recyclerView.adapter = trendingMovieAdapter
                     moviesFragmentViewModel.getTrendingMoviesData()
                     setupTrendingMovieObserver()
                 }
                 TVSHOW -> {
-                    textView5.text = "TVSHOW.toString()"
+                    textView5.text = "TV SHOW "
                     recyclerView.adapter = tvShowAdapter
                     moviesFragmentViewModel.getTvShowData()
                     setupTvShowObserver()
                 }
                 MOVIE -> {
-                    textView5.text = "MOVIE.toString()"
+                    textView5.text = "MOVIE "
                     recyclerView.adapter = movieListAdapter
                     moviesFragmentViewModel.getMoviesData()
                     setupMovieObserver()
