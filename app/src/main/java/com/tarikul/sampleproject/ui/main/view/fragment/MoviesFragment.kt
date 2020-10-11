@@ -8,6 +8,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.navArgs
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.tarikul.sampleproject.R
 import com.tarikul.sampleproject.data.model.movieList.Result
@@ -57,7 +58,7 @@ class MoviesFragment : Fragment() {
     private fun setupView(view: View) {
         view.apply {
             recyclerView.layoutManager =
-                LinearLayoutManager(activity, LinearLayoutManager.HORIZONTAL, false)
+                GridLayoutManager(context, 3)
             when (args.movieType) {
                 TRENDING -> {
                     textView5.text = "TRENDING.toString()"
