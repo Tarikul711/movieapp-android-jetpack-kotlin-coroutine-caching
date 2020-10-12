@@ -18,6 +18,7 @@ import com.tarikul.sampleproject.ui.main.pagination.PaginationState
 import com.tarikul.sampleproject.ui.main.view.fragment.HomeFragmentDirections
 import com.tos.androidlivedataviewmodel.projectOne.utils.MovieType
 import kotlinx.android.synthetic.main.item_movie.view.*
+import kotlinx.android.synthetic.main.loading_view_layout.view.*
 import java.util.*
 
 
@@ -30,10 +31,12 @@ class MoviePagingAdapter :
     private var data: List<Result> = ArrayList()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
-        return MovieListViewHolder(
-            LayoutInflater.from(parent.context)
-                .inflate(R.layout.item_movie, parent, false)
-        )
+        val view = LayoutInflater.from(parent.context).inflate(viewType, parent, false)
+        return when (viewType) {
+            R.layout.item_movie -> MovieListViewHolder(view)
+            R.layout.loading_view_layout -> LoadingViewHolder(view)
+            else -> throw IllegalArgumentException("Unknown view type $viewType")
+        }
     }
 
 //    override fun getItemCount() = data.size
@@ -95,6 +98,28 @@ class MoviePagingAdapter :
             }
         }
     }
+    class LoadingViewHolder(view: View) : RecyclerView.ViewHolder(view) {
 
+        fun bind(status: PaginationState?, listener: movieInteractionListener) {
+            hideViews()
+            setVisibleRightViews(status)
+            itemView.btn_retry.setOnClickListener{ listener.onClickRetry() }
+        }
+
+        private fun hideViews() {
+            itemView.tv_error_message.visibility = View.GONE
+            itemView.btn_retry.visibility = View.GONE
+        }
+
+        private fun setVisibleRightViews(paginationState: PaginationState?) {
+            when (paginationState) {
+                PaginationState.ERROR -> {
+                    itemView.btn_retry.visibility = View.VISIBLE
+                    itemView.tv_error_message.visibility = View.VISIBLE
+                }
+            }
+        }
+
+    }
 
 }
