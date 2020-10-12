@@ -25,10 +25,10 @@ import java.util.*
 /**
  *Created by tarikul on 29/9/20
  */
-class MoviePagingAdapter :
+class MoviePagingAdapter(private val listener: movieInteractionListener) :
     PagedListAdapter<Result, RecyclerView.ViewHolder>(diffUtilCallback) {
+
     private var state: PaginationState? = null
-    private var data: List<Result> = ArrayList()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(viewType, parent, false)
@@ -39,14 +39,16 @@ class MoviePagingAdapter :
         }
     }
 
-//    override fun getItemCount() = data.size
-
-    override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) =
-        holder.bind(data[position])
-
-    fun swapData(data: List<Result>) {
-        this.data = data
-        notifyDataSetChanged()
+    override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
+        when (getItemViewType(position)) {
+            R.layout.item_movie -> getItem(position)?.let {
+                (holder as MovieListViewHolder).bind(
+                    it,
+                    listener
+                )
+            }
+            R.layout.loading_view_layout -> (holder as LoadingViewHolder).bind(state, listener)
+        }
     }
 
 
@@ -66,7 +68,7 @@ class MoviePagingAdapter :
     }
 
     class MovieListViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        fun bind(item: Result) = with(itemView) {
+        fun bind(item: Result, listener: movieInteractionListener) = with(itemView) {
             itemView.apply {
                 var requestOptions = RequestOptions()
                 requestOptions = requestOptions.transforms(CenterCrop(), RoundedCorners(10))
@@ -98,12 +100,13 @@ class MoviePagingAdapter :
             }
         }
     }
+
     class LoadingViewHolder(view: View) : RecyclerView.ViewHolder(view) {
 
         fun bind(status: PaginationState?, listener: movieInteractionListener) {
             hideViews()
             setVisibleRightViews(status)
-            itemView.btn_retry.setOnClickListener{ listener.onClickRetry() }
+            itemView.btn_retry.setOnClickListener { listener.onClickRetry() }
         }
 
         private fun hideViews() {
