@@ -22,7 +22,7 @@ import java.util.*
 /**
  *Created by tarikul on 29/9/20
  */
-class MovieListAdapter : RecyclerView.Adapter<MovieListAdapter.MovieListViewHolder>() {
+class MoviePagingAdapter : RecyclerView.Adapter<MoviePagingAdapter.MovieListViewHolder>() {
 
     private var data: List<Result> = ArrayList()
 
