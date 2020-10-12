@@ -4,6 +4,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.findNavController
+import androidx.paging.PagedListAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
@@ -13,6 +14,7 @@ import com.bumptech.glide.request.RequestOptions
 import com.tarikul.sampleproject.R
 import com.tarikul.sampleproject.data.api.BaseUrl.BASE_IMAGES_URL
 import com.tarikul.sampleproject.data.model.movieList.Result
+import com.tarikul.sampleproject.ui.main.pagination.PaginationState
 import com.tarikul.sampleproject.ui.main.view.fragment.HomeFragmentDirections
 import com.tos.androidlivedataviewmodel.projectOne.utils.MovieType
 import kotlinx.android.synthetic.main.item_movie.view.*
@@ -22,25 +24,42 @@ import java.util.*
 /**
  *Created by tarikul on 29/9/20
  */
-class MoviePagingAdapter : RecyclerView.Adapter<MoviePagingAdapter.MovieListViewHolder>() {
-
+class MoviePagingAdapter :
+    PagedListAdapter<Result, RecyclerView.ViewHolder>(diffUtilCallback) {
+    private var state: PaginationState? = null
     private var data: List<Result> = ArrayList()
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MovieListViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         return MovieListViewHolder(
             LayoutInflater.from(parent.context)
                 .inflate(R.layout.item_movie, parent, false)
         )
     }
 
-    override fun getItemCount() = data.size
+//    override fun getItemCount() = data.size
 
-    override fun onBindViewHolder(holder: MovieListViewHolder, position: Int) =
+    override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) =
         holder.bind(data[position])
 
     fun swapData(data: List<Result>) {
         this.data = data
         notifyDataSetChanged()
+    }
+
+
+    override fun getItemCount(): Int {
+        return super.getItemCount() + if (hasFooter()) 1 else 0
+    }
+
+    private fun hasFooter(): Boolean {
+        return super.getItemCount() != 0 && (state == PaginationState.LOADING || state == PaginationState.ERROR)
+    }
+
+    fun updatePaginationState(newState: PaginationState) {
+        this.state = newState
+        if (newState != PaginationState.LOADING) {
+            notifyDataSetChanged()
+        }
     }
 
     class MovieListViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
@@ -76,5 +95,6 @@ class MoviePagingAdapter : RecyclerView.Adapter<MoviePagingAdapter.MovieListView
             }
         }
     }
+
 
 }
