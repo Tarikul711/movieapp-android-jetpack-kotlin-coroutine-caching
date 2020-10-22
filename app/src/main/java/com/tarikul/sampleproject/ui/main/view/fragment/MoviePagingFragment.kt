@@ -38,7 +38,7 @@ class MoviePagingFragment : Fragment(R.layout.fragment_movies),
         super.onActivityCreated(savedInstanceState)
         initUI()
 //        obsStates()
-        obsData()
+        observableData()
     }
 
     private fun initUI() {
@@ -50,7 +50,7 @@ class MoviePagingFragment : Fragment(R.layout.fragment_movies),
         }
     }
 
-    private fun obsData() {
+    private fun observableData() {
         activity?.let {
             moviesFragmentViewModel.getMovies().observe(it, Observer {
                 it?.let { resource ->
