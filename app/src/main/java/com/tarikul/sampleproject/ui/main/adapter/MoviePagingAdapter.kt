@@ -14,8 +14,8 @@ import com.bumptech.glide.request.RequestOptions
 import com.tarikul.sampleproject.R
 import com.tarikul.sampleproject.data.api.BaseUrl.BASE_IMAGES_URL
 import com.tarikul.sampleproject.data.model.movieList.Result
+import com.tarikul.sampleproject.ui.main.home.HomeFragmentDirections
 import com.tarikul.sampleproject.ui.main.pagination.PaginationState
-import com.tarikul.sampleproject.ui.main.view.fragment.HomeFragmentDirections
 import kotlinx.android.synthetic.main.item_movie.view.*
 import kotlinx.android.synthetic.main.loading_view_layout.view.*
 import java.util.*
