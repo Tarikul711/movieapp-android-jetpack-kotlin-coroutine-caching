@@ -1,4 +1,4 @@
-package com.tarikul.sampleproject.ui.main.view.fragment
+package com.tarikul.sampleproject.ui.main.list
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -17,7 +17,7 @@ import com.tarikul.sampleproject.ui.base.ViewModelFactory
 import com.tarikul.sampleproject.ui.main.home.adapter.MovieListAdapter
 import com.tarikul.sampleproject.ui.main.home.adapter.TrendingMovieAdapter
 import com.tarikul.sampleproject.ui.main.home.adapter.TvShowListAdapter
-import com.tarikul.sampleproject.ui.main.viewmodel.MoviesFragmentViewModel
+import com.tarikul.sampleproject.ui.main.view.fragment.MoviesFragmentArgs
 import com.tos.androidlivedataviewmodel.projectOne.data.api.ApiHelperImpl
 import com.tos.androidlivedataviewmodel.projectOne.utils.MovieType.*
 import com.tos.androidlivedataviewmodel.projectOne.utils.Status

@@ -6,7 +6,7 @@ import com.tarikul.sampleproject.data.repository.MovieDetailRepository
 import com.tarikul.sampleproject.data.repository.MovieListRepository
 import com.tarikul.sampleproject.ui.main.home.HomeFragmentViewModel
 import com.tarikul.sampleproject.ui.main.detail.MovieDetailViewModel
-import com.tarikul.sampleproject.ui.main.viewmodel.MoviesFragmentViewModel
+import com.tarikul.sampleproject.ui.main.list.MoviesFragmentViewModel
 import com.tos.myapplication.data.api.ApiHelper
 
 /**
@@ -21,7 +21,9 @@ class ViewModelFactory(val apiHelper: ApiHelper) : ViewModelProvider.Factory {
             ) as T
         }
         if (modelClass.isAssignableFrom(MoviesFragmentViewModel::class.java)) {
-            return MoviesFragmentViewModel(MovieListRepository(apiHelper)) as T
+            return MoviesFragmentViewModel(
+                MovieListRepository(apiHelper)
+            ) as T
         }
         if (modelClass.isAssignableFrom(MovieDetailViewModel::class.java)) {
             return MovieDetailViewModel(

@@ -1,4 +1,4 @@
-package com.tarikul.sampleproject.ui.main.view.fragment
+package com.tarikul.sampleproject.ui.main.search
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -8,14 +8,14 @@ import android.view.ViewGroup
 import com.tarikul.sampleproject.R
 
 
-class ProfileFragment : Fragment() {
+class SearchFragment : Fragment() {
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        val view = inflater.inflate(R.layout.fragment_profile, container, false)
+        val view = inflater.inflate(R.layout.fragment_search, container, false)
 
         return view
     }

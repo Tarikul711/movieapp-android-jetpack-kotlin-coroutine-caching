@@ -12,7 +12,7 @@ import com.tarikul.sampleproject.data.model.movieList.Result
 import com.tarikul.sampleproject.ui.base.ViewModelFactory
 import com.tarikul.sampleproject.ui.main.adapter.*
 import com.tarikul.sampleproject.ui.main.pagination.PaginationState
-import com.tarikul.sampleproject.ui.main.viewmodel.MoviesFragmentViewModel
+import com.tarikul.sampleproject.ui.main.list.MoviesFragmentViewModel
 import com.tos.androidlivedataviewmodel.projectOne.data.api.ApiHelperImpl
 import com.tos.androidlivedataviewmodel.projectOne.utils.Status
 import com.tos.myapplication.data.api.RetrofitBuilder
