@@ -1,4 +1,4 @@
-package com.tarikul.sampleproject.ui.main.view.fragment
+package com.tarikul.sampleproject.ui.main.home
 
 
 import android.os.Bundle
@@ -15,10 +15,10 @@ import com.tarikul.sampleproject.data.model.movieList.Result as Result
 import com.tarikul.sampleproject.data.model.trendingList.Result as TrendResult
 import com.tarikul.sampleproject.data.model.tvShowList.Result as TvShowResult
 import com.tarikul.sampleproject.ui.base.ViewModelFactory
-import com.tarikul.sampleproject.ui.main.adapter.MovieListAdapter
-import com.tarikul.sampleproject.ui.main.adapter.TrendingMovieAdapter
-import com.tarikul.sampleproject.ui.main.adapter.TvShowListAdapter
-import com.tarikul.sampleproject.ui.main.viewmodel.HomeFragmentViewModel
+import com.tarikul.sampleproject.ui.main.home.adapter.MovieListAdapter
+import com.tarikul.sampleproject.ui.main.home.adapter.TrendingMovieAdapter
+import com.tarikul.sampleproject.ui.main.home.adapter.TvShowListAdapter
+import com.tarikul.sampleproject.ui.main.view.fragment.HomeFragmentDirections
 import com.tos.androidlivedataviewmodel.projectOne.data.api.ApiHelperImpl
 import com.tos.androidlivedataviewmodel.projectOne.utils.MovieType.*
 import com.tos.androidlivedataviewmodel.projectOne.utils.Status
@@ -50,9 +50,12 @@ class HomeFragment : Fragment() {
     }
 
     private fun setupAdapter() {
-        movieListAdapter = MovieListAdapter()
-        trendingMovieAdapter = TrendingMovieAdapter()
-        tvShowAdapter = TvShowListAdapter()
+        movieListAdapter =
+            MovieListAdapter()
+        trendingMovieAdapter =
+            TrendingMovieAdapter()
+        tvShowAdapter =
+            TvShowListAdapter()
     }
 
 
@@ -76,15 +79,24 @@ class HomeFragment : Fragment() {
 
         view.apply {
             tvTrendingSeeAll.setOnClickListener {
-                val action = HomeFragmentDirections.trendingToMoviesFragment(TRENDING)
+                val action =
+                    HomeFragmentDirections.trendingToMoviesFragment(
+                        TRENDING
+                    )
                 findNavController().navigate(action)
             }
             tvTvShow.setOnClickListener {
-                val action = HomeFragmentDirections.trendingToMoviesFragment(TVSHOW)
+                val action =
+                    HomeFragmentDirections.trendingToMoviesFragment(
+                        TVSHOW
+                    )
                 findNavController().navigate(action)
             }
             tvUpComing.setOnClickListener {
-                val action = HomeFragmentDirections.trendingToMoviesFragment(MOVIE)
+                val action =
+                    HomeFragmentDirections.trendingToMoviesFragment(
+                        MOVIE
+                    )
                 findNavController().navigate(action)
             }
         }

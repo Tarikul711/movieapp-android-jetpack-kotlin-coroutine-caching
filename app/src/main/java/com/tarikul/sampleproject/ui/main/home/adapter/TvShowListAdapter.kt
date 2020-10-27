@@ -1,4 +1,4 @@
-package com.tarikul.sampleproject.ui.main.adapter
+package com.tarikul.sampleproject.ui.main.home.adapter
 
 import android.view.LayoutInflater
 import android.view.View

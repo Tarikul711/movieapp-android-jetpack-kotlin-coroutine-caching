@@ -1,10 +1,9 @@
-package com.tarikul.sampleproject.ui.main.adapter
+package com.tarikul.sampleproject.ui.main.home.adapter
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.navigation.findNavController
-import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.bitmap.CenterCrop
@@ -12,9 +11,7 @@ import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.bumptech.glide.request.RequestOptions
 import com.tarikul.sampleproject.R
 import com.tarikul.sampleproject.data.api.BaseUrl.BASE_IMAGES_URL
-import com.tarikul.sampleproject.data.model.movieList.Result
-import com.tarikul.sampleproject.ui.main.view.fragment.HomeFragmentDirections
-import com.tos.androidlivedataviewmodel.projectOne.utils.MovieType
+import com.tarikul.sampleproject.data.model.trendingList.Result
 import kotlinx.android.synthetic.main.item_movie.view.*
 import java.util.*
 
@@ -22,35 +19,40 @@ import java.util.*
 /**
  *Created by tarikul on 29/9/20
  */
-class MovieListAdapter : RecyclerView.Adapter<MovieListAdapter.MovieListViewHolder>() {
+class TrendingMovieAdapter : RecyclerView.Adapter<TrendingMovieAdapter.MovieListViewHolder>() {
 
     private var data: List<Result> = ArrayList()
-
+    private val TAG = "TrendingMovieAdapter"
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MovieListViewHolder {
+        Log.e(TAG, "onCreateViewHolder: ")
         return MovieListViewHolder(
             LayoutInflater.from(parent.context)
-                .inflate(R.layout.item_movie, parent, false)
+                .inflate(R.layout.item_trending, parent, false)
         )
     }
 
     override fun getItemCount() = data.size
 
-    override fun onBindViewHolder(holder: MovieListViewHolder, position: Int) =
-        holder.bind(data[position])
+    override fun onBindViewHolder(holder: MovieListViewHolder, position: Int) {
+        Log.e(TAG, "onBindViewHolder: ")
+        return holder.bind(data[position])
+    }
 
     fun swapData(data: List<Result>) {
         this.data = data
+        Log.e(TAG, "swapData: " + data.size)
         notifyDataSetChanged()
     }
 
     class MovieListViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+        private val TAG = "TrendingMovieAdapter"
         fun bind(item: Result) = with(itemView) {
+            Log.e(TAG, "bind: ")
             itemView.apply {
                 var requestOptions = RequestOptions()
                 requestOptions = requestOptions.transforms(CenterCrop(), RoundedCorners(10))
                 tvMovieTitle.text = item.original_title
                 tvRating.text = item.vote_average.toString()
-                tvMovieYear.text = item.release_date.split("-")[0]
                 Glide.with(ivMovieImage)
                     .load("${BASE_IMAGES_URL}${item.poster_path}")
                     .apply(requestOptions)
@@ -58,23 +60,8 @@ class MovieListAdapter : RecyclerView.Adapter<MovieListAdapter.MovieListViewHold
 
             }
             setOnClickListener {
-                val action =
-                    HomeFragmentDirections.actionHomeFragmentToMovieDetailFragment(item.id.toString())
-                findNavController().navigate(action)
+                // TODO: Handle on click
             }
         }
     }
-
-    companion object {
-        private val diffUtilCallback = object : DiffUtil.ItemCallback<Result>() {
-            override fun areItemsTheSame(oldItem: Result, newItem: Result): Boolean {
-                return oldItem.id == newItem.id
-            }
-
-            override fun areContentsTheSame(oldItem: Result, newItem: Result): Boolean {
-                return oldItem == newItem
-            }
-        }
-    }
-
 }

@@ -9,15 +9,14 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.LinearLayoutManager
 import com.tarikul.sampleproject.R
 import com.tarikul.sampleproject.data.model.movieList.Result
 import com.tarikul.sampleproject.data.model.trendingList.Result as TrendingResult
 import com.tarikul.sampleproject.data.model.tvShowList.Result as TvShowResult
 import com.tarikul.sampleproject.ui.base.ViewModelFactory
-import com.tarikul.sampleproject.ui.main.adapter.MovieListAdapter
-import com.tarikul.sampleproject.ui.main.adapter.TrendingMovieAdapter
-import com.tarikul.sampleproject.ui.main.adapter.TvShowListAdapter
+import com.tarikul.sampleproject.ui.main.home.adapter.MovieListAdapter
+import com.tarikul.sampleproject.ui.main.home.adapter.TrendingMovieAdapter
+import com.tarikul.sampleproject.ui.main.home.adapter.TvShowListAdapter
 import com.tarikul.sampleproject.ui.main.viewmodel.MoviesFragmentViewModel
 import com.tos.androidlivedataviewmodel.projectOne.data.api.ApiHelperImpl
 import com.tos.androidlivedataviewmodel.projectOne.utils.MovieType.*
@@ -50,9 +49,12 @@ class MoviesFragment : Fragment() {
 
 
     private fun setupAdapter() {
-        movieListAdapter = MovieListAdapter()
-        trendingMovieAdapter = TrendingMovieAdapter()
-        tvShowAdapter = TvShowListAdapter()
+        movieListAdapter =
+            MovieListAdapter()
+        trendingMovieAdapter =
+            TrendingMovieAdapter()
+        tvShowAdapter =
+            TvShowListAdapter()
     }
 
     private fun setupView(view: View) {
