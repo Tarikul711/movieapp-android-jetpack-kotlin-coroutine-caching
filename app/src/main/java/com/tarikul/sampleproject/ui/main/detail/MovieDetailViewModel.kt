@@ -1,4 +1,4 @@
-package com.tarikul.sampleproject.ui.main.viewmodel
+package com.tarikul.sampleproject.ui.main.detail
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel

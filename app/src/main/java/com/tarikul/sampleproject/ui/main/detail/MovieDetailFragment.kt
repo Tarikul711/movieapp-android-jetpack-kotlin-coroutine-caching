@@ -1,4 +1,4 @@
-package com.tarikul.sampleproject.ui.main.view.fragment
+package com.tarikul.sampleproject.ui.main.detail
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -16,7 +16,7 @@ import com.tarikul.sampleproject.data.model.movie.MovieResponse
 import com.tarikul.sampleproject.data.model.movieList.MovieListResponse
 import com.tarikul.sampleproject.ui.base.ViewModelFactory
 import com.tarikul.sampleproject.ui.main.adapter.MovieListAdapter
-import com.tarikul.sampleproject.ui.main.viewmodel.MovieDetailViewModel
+import com.tarikul.sampleproject.ui.main.view.fragment.MovieDetailFragmentArgs
 import com.tos.androidlivedataviewmodel.projectOne.data.api.ApiHelperImpl
 import com.tos.androidlivedataviewmodel.projectOne.utils.Status
 import com.tos.myapplication.data.api.RetrofitBuilder
