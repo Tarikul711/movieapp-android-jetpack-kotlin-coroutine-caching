@@ -22,6 +22,7 @@ import com.tos.androidlivedataviewmodel.projectOne.data.api.ApiHelperImpl
 import com.tos.androidlivedataviewmodel.projectOne.utils.MovieType.*
 import com.tos.androidlivedataviewmodel.projectOne.utils.Status
 import com.tos.myapplication.data.api.RetrofitBuilder
+import kotlinx.android.synthetic.main.fragment_home.*
 import kotlinx.android.synthetic.main.fragment_home.view.*
 
 class HomeFragment : Fragment() {
@@ -38,13 +39,15 @@ class HomeFragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         val view = inflater.inflate(R.layout.fragment_home, container, false)
-        setupAdapter()
-        setupUI(view)
-        setupViewModel()
-        setupMovieObserver()
-        setupTrendingMovieObserver()
-        setupTvShowObserver()
-        setupMovieFragment(view)
+
+        textView2.text = ""
+        /* setupAdapter()
+         setupUI(view)
+         setupViewModel()
+         setupMovieObserver()
+         setupTrendingMovieObserver()
+         setupTvShowObserver()
+         setupMovieFragment(view)*/
         return view
     }
 

@@ -17,7 +17,6 @@ import com.tarikul.sampleproject.ui.base.ViewModelFactory
 import com.tarikul.sampleproject.ui.main.home.adapter.MovieListAdapter
 import com.tarikul.sampleproject.ui.main.home.adapter.TrendingMovieAdapter
 import com.tarikul.sampleproject.ui.main.home.adapter.TvShowListAdapter
-import com.tarikul.sampleproject.ui.main.view.fragment.MoviesFragmentArgs
 import com.tos.androidlivedataviewmodel.projectOne.data.api.ApiHelperImpl
 import com.tos.androidlivedataviewmodel.projectOne.utils.MovieType.*
 import com.tos.androidlivedataviewmodel.projectOne.utils.Status
