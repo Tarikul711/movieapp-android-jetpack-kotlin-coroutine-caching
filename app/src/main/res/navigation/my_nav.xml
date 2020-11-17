@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/my_nav"
-    app:startDestination="@id/homeFragment">
+    app:startDestination="@id/zoomSdkFragment">
 
     <fragment
         android:id="@+id/homeFragment"
@@ -56,4 +56,9 @@
             app:argType="string"
             android:defaultValue="497582" />
     </fragment>
+    <fragment
+        android:id="@+id/zoomSdkFragment"
+        android:name="com.tarikul.sampleproject.ui.main.zoomsdk.ZoomSdkFragment"
+        android:label="fragment_zoom_sdk"
+        tools:layout="@layout/fragment_zoom_sdk" />
 </navigation>
