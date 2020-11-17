@@ -69,4 +69,12 @@ dependencies {
     implementation 'androidx.navigation:navigation-fragment-ktx:2.3.0'
     implementation 'androidx.navigation:navigation-ui-ktx:2.3.0'
 
+    // zoom library files added
+//    implementation files('libs/commonlib.aar')
+//    implementation files('libs/mobilertc.aar')
+
+    // library for zoom sdk
+    implementation 'androidx.multidex:multidex:2.0.0'
+    implementation 'com.google.android:flexbox:2.0.1'
+    implementation 'androidx.swiperefreshlayout:swiperefreshlayout:1.0.0'
 }
