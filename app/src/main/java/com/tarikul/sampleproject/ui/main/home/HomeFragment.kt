@@ -40,14 +40,13 @@ class HomeFragment : Fragment() {
         // Inflate the layout for this fragment
         val view = inflater.inflate(R.layout.fragment_home, container, false)
 
-        textView2.text = ""
-        /* setupAdapter()
+         setupAdapter()
          setupUI(view)
          setupViewModel()
          setupMovieObserver()
          setupTrendingMovieObserver()
          setupTvShowObserver()
-         setupMovieFragment(view)*/
+         setupMovieFragment(view)
         return view
     }
 
