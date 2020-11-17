@@ -2,6 +2,7 @@ package com.tarikul.sampleproject.ui.main.home
 
 
 import android.os.Bundle
+import android.text.Html
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -40,13 +41,35 @@ class HomeFragment : Fragment() {
         // Inflate the layout for this fragment
         val view = inflater.inflate(R.layout.fragment_home, container, false)
 
-         setupAdapter()
+        view.textView2.text=Html.fromHtml("<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n" +
+                "  <mfenced open=\"[\" close=\"]\">\n" +
+                "    <mtable rowspacing=\"4pt\" columnspacing=\"1em\">\n" +
+                "      <mtr>\n" +
+                "        <mtd>\n" +
+                "          <mi>a</mi>\n" +
+                "        </mtd>\n" +
+                "        <mtd>\n" +
+                "          <mi>b</mi>\n" +
+                "        </mtd>\n" +
+                "      </mtr>\n" +
+                "      <mtr>\n" +
+                "        <mtd>\n" +
+                "          <mi>c</mi>\n" +
+                "        </mtd>\n" +
+                "        <mtd>\n" +
+                "          <mi>d</mi>\n" +
+                "        </mtd>\n" +
+                "      </mtr>\n" +
+                "    </mtable>\n" +
+                "  </mfenced>\n" +
+                "</math>",Html.FROM_HTML_MODE_COMPACT)
+        /* setupAdapter()
          setupUI(view)
          setupViewModel()
          setupMovieObserver()
          setupTrendingMovieObserver()
          setupTvShowObserver()
-         setupMovieFragment(view)
+         setupMovieFragment(view)*/
         return view
     }
 
