@@ -9,7 +9,7 @@ android {
 
     defaultConfig {
         applicationId "com.tarikul.sampleproject"
-        minSdkVersion 19
+        minSdkVersion 21
         targetSdkVersion 30
         versionCode 1
         versionName "1.0"
@@ -70,8 +70,8 @@ dependencies {
     implementation 'androidx.navigation:navigation-ui-ktx:2.3.0'
 
     // zoom library files added
-//    implementation files('libs/commonlib.aar')
-//    implementation files('libs/mobilertc.aar')
+    implementation files('libs/commonlib.aar')
+    implementation files('libs/mobilertc.aar')
 
     // library for zoom sdk
     implementation 'androidx.multidex:multidex:2.0.0'
